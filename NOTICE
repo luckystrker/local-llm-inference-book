@@ -1,0 +1,76 @@
+NOTICE
+======
+
+This book includes material adapted from the following work:
+
+  AI Infra in Depth: Quantitative Analysis and System Design
+  Copyright 2026 Bojie Li (Боцзе Ли)
+  Original: https://github.com/bojieli/ai-infra-book
+  Licensed under the Apache License, Version 2.0.
+
+A Russian translation is maintained as a community edition:
+
+  AI-инфраструктура изнутри
+  Russian community edition, organized by @ilkruglov
+  https://github.com/ilkruglov/ai-infra-book
+  Licensed under the Apache License, Version 2.0.
+  Based on the original at commit d0cc188b68f49584fd21e05518a5d0f0db79aaf5.
+
+A companion skill used as a secondary source for the structure of the
+appendix material:
+
+  Designing AI Infra
+  https://github.com/ilkruglov/designing-ai-infra-skill
+  Licensed under the Apache License, Version 2.0.
+
+What was adapted
+----------------
+
+The following parts of "Локальный инференс LLM" draw on ideas, formulas,
+classifications, or the order of analysis from the works above. The text was
+not copied verbatim: it was paraphrased, re-scoped to single-machine local
+inference (one PC, Mac, mini-PC; llama.cpp and MLX), and supplemented with
+new examples, calculations, and cross-references to this book's chapters.
+
+  * fallacies.md — the symptom-indexed catalogue of misconceptions. Its
+    structure and several entries are adapted from references/fallacies.md
+    in the Designing AI Infra skill and from the "Заблуждения и ловушки"
+    sections of AI Infra in Depth (chapters 1–5 and 8). New entries
+    address local-scale issues: GB vs GiB, context vs weights, memory
+    bandwidth vs TFLOPS, quantization overhead, and speculative decoding.
+  * cheatsheet.md — the analysis order, the "five overlooked constraints",
+    and the question → formula → chapter table. Adapted from
+    references/cheatsheet.md and the preface of AI Infra in Depth.
+  * 12-benchmark-methodology.md, §12.7 — "измерение против нижней границы":
+    lower-bound calculation, MBU/MFU, decomposition into queue / prefill /
+    decode / steps, and the one-hypothesis-one-condition rule. Adapted from
+    references/playbooks/diagnose-serving.md and from chapters 1 and 8 of
+    AI Infra in Depth.
+  * 02-prefill-decode-roofline.md, §2.8 — TTFT and ITL as separate metrics.
+    Adapted from chapter 8, §8.1.3 of AI Infra in Depth.
+  * 08-batching-vllm.md — Little's law for the request queue and the batch
+    threshold b* where KV reads overtake weight reads. Adapted from
+    chapters 3 and 8 of AI Infra in Depth.
+  * 09-speculative-decoding.md, §9.3 — the expected accepted-chain length
+    E[N] and the break-even draft budget. Adapted from chapter 8, §8.5.2
+    of AI Infra in Depth; consistent with Leviathan et al. (2022).
+  * 15-where-to-go-next.md, §15.2 — the "next level: from one PC to a
+    cluster and training" reading route. Based on the structure of
+    AI Infra in Depth (chapters 1–12).
+  * 16-glossary.md — definitions of lower bound, MBU/MFU, effective
+    throughput, Little's law, b*, E[N], and break-even draft.
+  * sources.md — bibliographic entries for the original book, the Russian
+    community translation, and the Designing AI Infra skill.
+
+The original author and the translation maintainers have not reviewed or
+endorsed this adaptation. Responsibility for the adapted text, examples, and
+any errors is the responsibility of the authors of this book.
+
+License of this book
+--------------------
+
+The prose of this book is licensed under Creative Commons Attribution 4.0
+International (see LICENSE). Code examples are licensed under the MIT License
+(see LICENSE-CODE). The Apache-2.0 material above retains its original
+license; where the licenses differ, the Apache-2.0 terms apply to the
+adapted portions.

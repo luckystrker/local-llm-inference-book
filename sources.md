@@ -27,6 +27,9 @@
 - **Hands-On Large Language Models** — Jay Alammar, Maarten Grootendorst, O'Reilly, 2024. [O'Reilly](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/). Уровень: новичок–средний. Зачем: визуальное введение в LLM и практические примеры; страница может требовать подписки.
 - **AI Engineering** — Chip Huyen, O'Reilly, 2025. [huyenchip.com/books](https://huyenchip.com/books/). Уровень: средний. Зачем: как строить приложения на моделях: оценка, RAG, агенты, эксплуатация.
 - **Designing Machine Learning Systems** — Chip Huyen, O'Reilly, 2022. [huyenchip.com/books](https://huyenchip.com/books/). Уровень: средний. Зачем: системное мышление про данные, деплой и мониторинг; полезно для серверной части.
+- **«AI Infra in Depth: Quantitative Analysis and System Design»** — Bojie Li (Боцзе Ли), 2026, Apache-2.0. [GitHub](https://github.com/bojieli/ai-infra-book). Уровень: продвинутый. Зачем: следующий уровень после одного ПК — количественные оценки памяти и roofline, батчинг и KV, несколько GPU и сеть, распределённый инференс, обучение. Из неё адаптированы §12.7, приложения о заблуждениях и порядке анализа, метрики TTFT/ITL, закон Литтла, `b*`, `E[N]` и безубыточный черновик.
+- **«AI-инфраструктура изнутри»** — русский перевод community edition, организатор [@ilkruglov](https://github.com/ilkruglov), Apache-2.0. [GitHub](https://github.com/ilkruglov/ai-infra-book). Уровень: продвинутый. Зачем: тот же текст с сохранённой нумерацией глав и разделов; использован для сверки терминов и цитат. Неофициальное издание сообщества, не замена авторской редактуре.
+- **«Designing AI Infra» (скилл)** — [@ilkruglov](https://github.com/ilkruglov), Apache-2.0. [GitHub](https://github.com/ilkruglov/designing-ai-infra-skill). Уровень: продвинутый. Зачем: каталог заблуждений, шпаргалка порядка анализа и плейбук диагностики сервинга; послужили основой для приложений и §12.7, пересказаны и пересчитаны под локальный масштаб.
 
 ## Архитектура и основы
 
