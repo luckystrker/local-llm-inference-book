@@ -173,9 +173,6 @@
 
 - **Tim Dettmers, «The Best GPUs for Deep Learning in 2023»** — 2023. [timdettmers.com](https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/). Уровень: средний. Зачем: как выбирать GPU под нагрузку и память.
 - **Chip Huyen, «Building A Generative AI Platform»** — 2024. [huyenchip.com](https://huyenchip.com/2024/07/25/genai-platform.html). Уровень: средний. Зачем: архитектура приложений вокруг моделей.
-- **Hugging Face, «Mixture of Experts Explained»** — 2022. [блог](https://huggingface.co/blog/moe). Уровень: новичок–средний. Зачем: визуальное введение в MoE.
-- **Hugging Face, «4-bit quantization»** — 2023. [блог](https://huggingface.co/blog/4bit-transformers-bitsandbytes). Уровень: новичок–средний. Зачем: практика 4-битного квантования.
-- **Unsloth, «Dynamic GGUFs»** — Unsloth. [docs.unsloth.ai](https://docs.unsloth.ai/basics/unsloth-dynamic-2.0-ggufs). Уровень: средний. Зачем: динамические кванты; заявления авторов.
 
 ## Ограничения проверки
 
