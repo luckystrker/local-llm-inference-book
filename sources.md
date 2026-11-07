@@ -56,7 +56,6 @@
 - **NVIDIA H100** — NVIDIA. [nvidia.com](https://www.nvidia.com/en-us/data-center/h100/). Уровень: справка. Зачем: пример спецификации HBM (3,35 ТБ/с у SXM).
 - **GeForce RTX 5090** — NVIDIA. [nvidia.com](https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/). Уровень: справка. Зачем: пример потребительской карты; точную пропускную способность смотрите в спецификации.
 - **Mac Studio — Technical Specifications** — Apple, 2026. [apple.com](https://www.apple.com/mac-studio/specs/). Уровень: справка. Зачем: пропускная способность объединённой памяти M5 Max/Ultra (460–614 ГБ/с и до 1,2 ТБ/с).
-- **GeForce RTX 5060 Ti 16 GB** — TechPowerUp. [techpowerup.com](https://www.techpowerup.com/gpu-specs/geforce-rtx-5060-ti-16-gb.c4292). Уровень: справка. Зачем: пример карты 16 ГБ и её пропускной способности.
 
 ## Квантование
 
