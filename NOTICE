@@ -14,7 +14,11 @@ A Russian translation is maintained as a community edition:
   Russian community edition, organized by @ilkruglov
   https://github.com/ilkruglov/ai-infra-book
   Licensed under the Apache License, Version 2.0.
-  Based on the original at commit d0cc188b68f49584fd21e05518a5d0f0db79aaf5.
+  The bundled translation used for cross-checking is pinned to original
+  commit 3bdcb4fcab73010eeaccf31cc10a8242a895d82e and translation commit
+  c9f4ec00ac658416c29857b1632a9ddbfe2ace3c. The standalone Russian edition
+  also documents upstream commit d0cc188b68f49584fd21e05518a5d0f0db79aaf5
+  (present in the original repository).
 
 A companion skill used as a secondary source for the structure of the
 appendix material:
@@ -73,4 +77,5 @@ The prose of this book is licensed under Creative Commons Attribution 4.0
 International (see LICENSE). Code examples are licensed under the MIT License
 (see LICENSE-CODE). The Apache-2.0 material above retains its original
 license; where the licenses differ, the Apache-2.0 terms apply to the
-adapted portions.
+adapted portions. The full text of the Apache License 2.0 is provided in
+LICENSE-APACHE.
