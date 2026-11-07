@@ -179,7 +179,7 @@ speedup ≈ 3,36 / (1 + 0,2) = 2,8
 - **Cai et al., «Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads» (2024)** — [arXiv:2401.10774](https://arxiv.org/abs/2401.10774). Множественные головы и дерево.
 - **Li et al., «EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty» (2024)** — [arXiv:2401.15077](https://arxiv.org/abs/2401.15077). Черновик на признаках.
 - **Li et al., «EAGLE-2» (2024)** — [arXiv:2406.16858](https://arxiv.org/abs/2406.16858). Динамическое дерево.
-- **Li et al., «EAGLE-3» (2025)** — [arXiv:2503.01840](https://arxiv.org/abs/2503.01840). Обучение с test-time scaling.
+- **Li et al., «EAGLE-3» (2025)** — [arXiv:2503.01840](https://arxiv.org/abs/2503.01840). Отказ от предсказания признаков в пользу прямых токенов и приём training-time test.
 - **DeepSeek-AI, «DeepSeek-V3 Technical Report» (2024)** — [arXiv:2412.19437](https://arxiv.org/abs/2412.19437). MTP как часть архитектуры.
 - **llama.cpp, `docs/speculative.md`** — [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/speculative.md). Типы спекуляции и флаги.
 - **llama.cpp PR #22673, «llama + spec: MTP Support»** — [GitHub](https://github.com/ggml-org/llama.cpp/pull/22673). Поддержка MTP-голов.
