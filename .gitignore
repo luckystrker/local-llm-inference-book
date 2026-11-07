@@ -1,3 +1,7 @@
 # Кэш Python от скриптов графиков
 __pycache__/
 *.pyc
+
+# Сборка mdBook
+book/
+mdbook

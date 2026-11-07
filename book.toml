@@ -1,0 +1,19 @@
+[book]
+title = "Локальный инференс LLM: от понятий до тюнинга на своём ПК"
+authors = ["Danil Kondratiuk"]
+language = "ru"
+src = "."
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/luckystrker/local-llm-inference-book"
+edit-url-template = "https://github.com/luckystrker/local-llm-inference-book/edit/main/{path}"
+additional-js = ["theme/mermaid-init.js"]
+
+[output.html.search]
+enable = true
