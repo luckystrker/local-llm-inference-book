@@ -75,7 +75,7 @@ B_eff = 1 / (0,7 / 1800 + 0,3 / 60) ≈ 186 ГБ/с
 
 ### AirLLM
 
-**AirLLM** — самый известный проект этого класса: [github.com/lyogavin/airllm](https://github.com/lyogavin/airllm), Apache-2.0, около 41,9 тыс. звёзд на 7 ноября 2026, последний коммит в тот же день. Он разбивает модель на слои, держит на GPU один слой и подгружает следующий, перекрывая загрузку с вычислением. Заявлено: 70B на 4 ГБ VRAM, DeepSeek-V3 671B примерно на 12 ГБ, Kimi K3 2.8T на 3,72 ГБ, Qwen3.8-Flash-Next 125B на 5,95 ГБ ([README](https://github.com/lyogavin/airllm)).
+**AirLLM** — самый известный проект этого класса: [github.com/lyogavin/airllm](https://github.com/lyogavin/airllm), Apache-2.0, около 41,9 тыс. звёзд на 7 ноября 2026, последний коммит в тот же день. Он разбивает модель на слои, держит на GPU один слой и подгружает следующий, перекрывая загрузку с вычислением. Заявлено: 70B на 4 ГБ VRAM, DeepSeek-V3 671B примерно на 12 ГБ, Kimi K3 2.8T на 3,72 ГБ, Qwen3.8-Flash-Next 125B на 5,95 ГБ (README считает полный объём ~180B вместе с 51B n-gram embedding) ([README](https://github.com/lyogavin/airllm)). Всё это — **самозаявленные** числа; независимые замеры есть только по скорости, и они ниже.
 
 Что здесь правда: модель действительно **запускается** на маленькой карте, без квантования и дистилляции. Что здесь не сказано в заголовке: скорость. Независимые замеры дают для 70B порядка **5–35 секунд на токен** на нормальном NVMe и ещё медленнее на слабом диске; на 16-гигабайтном Mac Mini Llama 3.1 8B шла около **19,6 секунды на токен**, а для 70B прогноз — 2,5–3 минуты на токен ([разбор](https://dev.to/arshtechpro/airllm-runs-a-70b-model-on-a-4gb-gpu-its-true-and-thats-not-the-interesting-part-hha), [тест на Mac Mini](https://kunalvohra.com/blog/airllm-on-a-16gb-mac-mini)).
 
@@ -129,7 +129,7 @@ B_eff = 1 / (0,7 / 1800 + 0,3 / 60) ≈ 186 ГБ/с
 
 ### Strata: самый громкий проект 2026 года
 
-**Что это.** [Strata](https://github.com/Niko1221/Strata) — MIT-движок на C++/CUDA/HIP/Metal/SYCL под конкретные большие MoE: Qwen3.8-Flash-Next (125B-A6B, [разбор Kaitchup](https://kaitchup.substack.com/p/qwen38-flash-next-review-benchmarks)), Qwen3.6-35B-A3B и DeepSeek V4.1-Flash. Проект создан 24 сентября 2026 года; по снимку GitHub API на 7 ноября 2026 у него **41,2 тыс. звёзд**, **1059 открытых issue/PR** и релиз **v0.2.12** ([GitHub](https://github.com/Niko1221/Strata), [релиз](https://github.com/Niko1221/Strata/releases/tag/v0.2.12)). Это очень молодой и очень быстро растущий проект; цифры звёзд здесь — мера внимания, а не зрелости.
+**Что это.** [Strata](https://github.com/Niko1221/Strata) — MIT-движок на C++/CUDA/HIP/Metal/SYCL под конкретные большие MoE: Qwen3.8-Flash-Next (125B-A6B; [Akita](https://akitaonrails.com/en/2026/10/22/best-open-source-llm-strata-with-qwen-3-8-flash-next/)), Qwen3.6-35B-A3B и DeepSeek V4.1-Flash. Проект создан 24 сентября 2026 года; по снимку GitHub API на 7 ноября 2026 у него **41,2 тыс. звёзд**, **1059 открытых issue/PR** и релиз **v0.2.12** ([GitHub](https://github.com/Niko1221/Strata), [релиз](https://github.com/Niko1221/Strata/releases/tag/v0.2.12)). Это очень молодой и очень быстро растущий проект; цифры звёзд здесь — мера внимания, а не зрелости.
 
 **Как устроено.** У Qwen3.8-Flash-Next 48 слоёв и 24 576 экспертов (512 на слой), на токен выбирается 10 экспертов плюс общий ([How it works](https://github.com/Niko1221/Strata/blob/main/docs/HOW_IT_WORKS.md)). Схема:
 
@@ -149,7 +149,7 @@ flowchart TB
     CPU --> OUT
 ```
 
-**Что заявлено.** Производитель заявляет 1,6–1,8× ускорение от MTP-спекуляции, 2,4–3,2 принятых токена за проход, 90–97% попаданий в кэш экспертов и скорость 4–6 ток/с для DeepSeek V4.1 на RTX 5070 12 ГБ с 64 ГБ ОЗУ, 9–11 ток/с на RTX 3060 с 46 ГБ ОЗУ, 19–21 ток/с на Strix Halo 128 ГБ и 74–77 ток/с на четырёх R9700 ([README](https://github.com/Niko1221/Strata), [MODELS](https://github.com/Niko1221/Strata/blob/main/docs/MODELS.md)). Всё это — **самозаявленные** числа.
+**Что заявлено.** Производитель заявляет 1,6–1,8× ускорение от MTP-спекуляции, 2,4–3,2 принятых токена за проход, 90–97% попаданий в кэш экспертов и скорость 4–6 ток/с для DeepSeek V4.1 на RTX 5070 12 ГБ с 64 ГБ ОЗУ, 9–11 ток/с на RTX 3060 с 46 ГБ ОЗУ, 19–21 ток/с на Strix Halo 128 ГБ и 74–77 ток/с на четырёх R9700 ([README](https://github.com/Niko1221/Strata), [MODELS](https://github.com/Niko1221/Strata/blob/main/docs/MODELS.md)). Всё это — **самозаявленные** числа. Важно: это README-таблица для 2.00 bpw на Strata 0.2.5 (Strix Halo — 0.2.7); в MODELS.md на Strata 0.2.4 (до Speed choice) те же конфигурации дают ~5, 6–9 и ~31, а с DSpark — 8,2–8,7 и 55–69. Числа расходятся из-за версии и режима.
 
 **Что подтверждено.** Независимый обзор Fabio Akita на RTX 5090 (32 ГБ), Ryzen 9 7950X3D и 96 ГБ ОЗУ: Qwen3.8-Flash-Next IQ3_S прошла его тест на **91 балл, Tier A**, всего на 1,5 балла ниже той же модели на B300, со скоростью около **159 ток/с** ([AkitaOnRails](https://akitaonrails.com/en/2026/10/22/best-open-source-llm-strata-with-qwen-3-8-flash-next/)). В логах действительно было 10–11,5 тыс. экспертов в VRAM и **90–97% попаданий**; холодный старт — 35–40 с; при работе занято 88 из 92 ГБ ОЗУ и около 48 ГБ swap. Это не «магия»: на 5090 просто очень быстрая память, а кэш покрывает почти всё.
 
@@ -166,17 +166,17 @@ flowchart TB
 
 **Идея.** Эксперты, которые не помещаются в VRAM, считаются на CPU с использованием AMX (Intel Sapphire Rapids и новее), AVX-512 или AVX2; GPU делает attention и то, что помещается. Ключевое — не гонять веса по PCIe, а считать их там, где они лежат. Это ровно тот же принцип, что в главе 5, но с ядрами, заточенными под серверные CPU.
 
-**Что заявлено.** Для DeepSeek-V3/R1 671B в Q4_K_M: 14 ГБ VRAM и **382 ГБ DRAM**, prefill 54–286 ток/с, декод 8,7–13,7 ток/с; против llama.cpp на той же машине — до **3,03×** в декоде и до **27,79×** в prefill ([туториал](https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md)). Тестировали на двухсокетном Xeon Gold 6454S с 1 ТБ DDR5 — это сервер, а не домашний ПК.
+**Что заявлено.** Для DeepSeek-V3/R1 671B в Q4_K_M: 14 ГБ VRAM и **382 ГБ DRAM**, prefill 54–286 ток/с, декод 8,7–13,7 ток/с; против llama.cpp на той же машине — до **3,03×** в декоде и до **27,79×** в prefill ([туториал](https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md)). Это агрегат разных версий: 3,03×/9,44× — V0.2, 27,79× — V0.3-preview. Тестировали на двухсокетном Xeon Gold 6454S с 1 ТБ DDR5 — это сервер, а не домашний ПК. Все цифры — **самозаявленные**.
 
-**Что подтверждено.** Цифры подробные и воспроизводимые, но это замеры команды на их железе. Независимых повторений на домашнем железе в открытом виде мало. Важно: «24 ГБ VRAM» в заголовке скрывает 382 ГБ ОЗУ; без серверной памяти и AMX/AVX-512 выигрыш будет скромнее.
+**Что подтверждено.** Это замеры команды на их железе; независимых повторений на домашнем железе в открытом виде мало. Важно: «24 ГБ VRAM» в заголовке скрывает 382 ГБ ОЗУ; без серверной памяти и AMX/AVX-512 выигрыш будет скромнее.
 
 **Цена.** Linux x86-64, Python 3.10–3.12, GPU NVIDIA Ampere/Ada/Hopper (для CUDA-части), много ОЗУ, сложная установка. На обычном десктопе с 64 ГБ ОЗУ 671B не запустить: только меньшие MoE или модели с сильным квантованием. Зато для «домашней лаборатории на старом сервере» это один из самых сильных вариантов.
 
 ### PowerInfer: горячие и холодные нейроны
 
-**Что это.** [PowerInfer](https://github.com/SJTU-IPADS/PowerInfer) — MIT, около 9,9 тыс. звёзд, последний коммит 11 мая 2026. Идея: активации нейронов в LLM распределены по степенному закону — небольшая часть нейронов («горячие») активна почти всегда, остальные («холодные») зависят от входа. Горячие держим на GPU, холодные считаем на CPU. Это не MoE-эксперты, а отдельные нейроны внутри FFN.
+**Что это.** [PowerInfer](https://github.com/Tiiny-AI/PowerInfer) — MIT, около 9,9 тыс. звёзд, последний коммит 11 мая 2026. Идея: активации нейронов в LLM распределены по степенному закону — небольшая часть нейронов («горячие») активна почти всегда, остальные («холодные») зависят от входа. Горячие держим на GPU, холодные считаем на CPU. Это не MoE-эксперты, а отдельные нейроны внутри FFN.
 
-**Что заявлено.** В среднем 13,20 ток/с и пик 29,08 ток/с на одной RTX 4090 для набора моделей, до 11,69× быстрее llama.cpp; на RTX 2080 Ti с INT4 — до 8× ([README](https://github.com/SJTU-IPADS/PowerInfer), [статья](https://arxiv.org/abs/2312.12456)). PowerInfer-2 для смартфонов: 11,68 ток/с на TurboSparse-Mixtral-47B, до 22× быстрее аналогов ([статья](https://arxiv.org/abs/2406.06282)).
+**Что заявлено.** В среднем 13,20 ток/с и пик 29,08 ток/с на одной RTX 4090 для набора моделей, до 11,69× быстрее llama.cpp; на RTX 2080 Ti с INT4 — до 8× ([README](https://github.com/Tiiny-AI/PowerInfer), [статья](https://arxiv.org/abs/2312.12456)). PowerInfer-2 для смартфонов: 11,68 ток/с на TurboSparse-Mixtral-47B, до 22× быстрее аналогов по README (в статье — до 27,8×) ([статья](https://arxiv.org/abs/2406.06282)). Все эти числа — **самозаявленные**; независимой проверки в открытом виде я не нашёл.
 
 **Что подтверждено и в чём подвох.** Проект работает, но только с моделями, у которых ReLU/ReGLU/Squared ReLU и разреженность около 90%: Falcon-40B (ReLU), семейство Llama2 (ReLU), ProSparse, Bamboo. Обычные Llama/Mistral/Qwen с SiLU не поддерживаются. Для 70B авторы дообучали ReLU-вариант всего на 5 млрд токенов, и в FAQ честно сказано, что качество просело. Код предсказателя обучения не выложен; PowerInfer-2 для смартфонов в этом репозитории тоже нет — это отдельная исследовательская работа. То есть «11× быстрее» — это про узкое семейство специально подготовленных моделей, а не про вашу любимую Qwen.
 
@@ -186,9 +186,9 @@ flowchart TB
 
 Два проекта показывают, куда движется предсказание экспертов.
 
-**MoE-Infinity** ([arXiv:2401.14361](https://arxiv.org/abs/2401.14361), [код](https://github.com/EfficientMoE/MoE-Infinity)) предлагает кэш экспертов с трассировкой активаций для batch=1 и предзагрузкой по истории. Заявлено ускорение per-token latency в **3,1–16,7×** по сравнению с vLLM, Ollama, DeepSpeed и BrainStorm на DeepSeek и Mixtral. Это исследовательский прототип, не готовый продукт.
+**MoE-Infinity** ([arXiv:2401.14361](https://arxiv.org/abs/2401.14361), [код](https://github.com/EfficientMoE/MoE-Infinity)) предлагает кэш экспертов с трассировкой активаций для batch=1 и предзагрузкой по истории. В статье заявлено ускорение per-token latency в **3,1–16,7×** по сравнению с vLLM, Ollama, DeepSpeed и BrainStorm на DeepSeek и Mixtral. Это исследовательский прототип, а не готовый продукт; README кода прямо предупреждает, что открытая версия отличается от версии из статьи. Цифры — из статьи, независимой проверки я не нашёл.
 
-**ExpertFlow** ([arXiv:2410.17954](https://arxiv.org/abs/2410.17954)) добавляет трансформер-предиктор маршрутизации, планировщик токенов и кэш с исправлением ошибок. Заявлено снижение памяти GPU до **93,72%** и ускорение до **10×** относительно сильных offload-баз; доля попаданий на DeepSeek-MoE — около **94%**. Опять же, это исследование, а не «поставил и поехал».
+**ExpertFlow** ([arXiv:2410.17954](https://arxiv.org/abs/2410.17954)) добавляет трансформер-предиктор маршрутизации, планировщик токенов и кэш с исправлением ошибок. В abstract заявлены снижение памяти GPU до **93,72%** и ускорение до **10×** относительно сильных offload-баз. Это исследование, а не «поставил и поехал»; независимой проверки я не нашёл.
 
 Общий вывод: предсказание экспертов работает, но требует либо обучения предиктора, либо трассировки на вашем трафике. В Strata и ktransformers это уже встроено; в llama.cpp пока есть только кэш `--moe-cache-mib` без предсказания.
 
@@ -214,11 +214,11 @@ flowchart TB
 | [NInfer](https://github.com/Neroued/ninfer) | 3,3 тыс. | Apache-2.0 | RTX 5090 и DGX Spark; Qwen3.6/3.8, GLM-5.3 | 101 ГиБ Flash-Next на RTX 5090 с CPU-offload |
 | [HyperQwen](https://github.com/syv-ai/HyperQwen) | 2,6 тыс. | Apache-2.0 | Qwen3.8-27B на одной 24-ГБ карте через vLLM | 127 ток/с single, 1 035 ток/с при 64 запросах |
 
-**Splash** — пример того, как ANE и Metal используются вместе: на M5 Pro 64 ГБ (замер на Splash 1.0) Qwen3.8-Flash-Next Q2_0 идёт 95 ток/с, Qwen3.6-35B-A3B — 210 ток/с, Qwen3.8-27B — 74 ток/с; для 27B prefill частично идёт на Neural Engine ([README](https://github.com/incoai/splash)). Числа самозаявленные, сравнение — с Strata на той же машине.
+**Splash** — пример того, как ANE и Metal используются вместе. По README (Splash 1.0): Flash-Next Q2_0 — 95 ток/с на M5 Pro 20-core/64 ГБ; 35B-A3B — 210 и 27B — 74 на M5 Pro 16-core/48 ГБ. Для 27B prefill частично идёт на Neural Engine ([README](https://github.com/incoai/splash)). Числа — **самозаявленные**, сравнение — с Strata на той же машине.
 
 **NInfer** — наоборот, только NVIDIA: RTX 5090 (sm_120a) и DGX Spark (sm_121a), выбранные чекпоинты, CUDA Graph, MTP/DFlash2, CPU expert offload. Flash-Next занимает 101 ГиБ в четырёх файлах; без большого объёма ОЗУ и быстрого NVMe не обойтись ([README](https://github.com/Neroued/ninfer)).
 
-**HyperQwen** не пытается запустить модель больше VRAM: он берёт 27B dense, патчит vLLM, переквантовывает головы и добавляет спекуляцию, чтобы выжать 127 ток/с на RTX 3090 и 150k контекста. Это пример «скорость на слабом железе» без offload, но только для одной модели и одной карты; числа — самозаявленные.
+**HyperQwen** не пытается запустить модель больше VRAM: он берёт 27B dense, патчит vLLM, переквантовывает головы и добавляет спекуляцию, чтобы выжать 127 ток/с на RTX 3090 и 150k контекста. Это пример «скорость на слабом железе» без offload, но только для одной модели и одной карты; числа — **самозаявленные**. В README NInfer заявлен размер (101 ГиБ), а не скорость; независимых замеров Splash, NInfer и HyperQwen я не нашёл.
 
 > [!WARNING]
 > У всех четырёх проектов возраст — месяцы, а не годы. Они могут быть быстрее универсальных движков, но у них меньше тестов, уже поддержка железа и больше шансов сломаться после обновления драйвера. Проверяйте на копии модели и не тащите в продакшен без запасного варианта.
@@ -229,7 +229,7 @@ flowchart TB
 
 ### exo
 
-[exo](https://github.com/exo-explore/exo) — Apache-2.0, около 48,2 тыс. звёзд, активен. Он автоматически находит устройства в локальной сети, строит граф топологии и распределяет слои с учётом ресурсов и задержек. Бэкенд — MLX (Apple Silicon), поэтому основной сценарий — Mac. Заявлено: tensor parallel даёт до 1,8× на двух устройствах и 3,2× на четырёх; RDMA over Thunderbolt 5 снижает задержку между устройствами до <50 мкс ([README](https://github.com/exo-explore/exo)).
+[exo](https://github.com/exo-explore/exo) — Apache-2.0, около 48,2 тыс. звёзд, активен. Он автоматически находит устройства в локальной сети, строит граф топологии и распределяет слои с учётом ресурсов и задержек. Бэкенд — MLX (Apple Silicon), поэтому основной сценарий — Mac. Заявлено: tensor parallel даёт до 1,8× на двух устройствах и 3,2× на четырёх; RDMA over Thunderbolt 5 снижает задержку между устройствами ([README](https://github.com/exo-explore/exo)). Заявленные 1,8×/3,2× — **самозаявленные**; независимый тест ниже.
 
 Независимый тест Jeff Geerling на четырёх Mac Studio M3 Ultra (1,5 ТБ объединённой памяти, около $40 тыс.): Qwen3 235B — около **32 ток/с**, Kimi K2 Thinking 1T (32B active) — около **30 ток/с** ([отчёт](https://www.jeffgeerling.com/blog/2025/15-tb-vram-on-mac-studio-rdma-over-thunderbolt-5)). Там же важное наблюдение: llama.cpp RPC на той же сети **замедляется** при добавлении узлов, а exo ускоряется.
 
@@ -273,7 +273,7 @@ flowchart TB
 
 ### HQQ
 
-[HQQ](https://github.com/mobiusml/hqq) — Apache-2.0, около 1 тыс. звёзд, последний коммит февраль 2026. Это не рантайм, а быстрый квантователь: 8/4/3/2/1 бит, **без калибровочных данных**, за минуты. Авторы заявляют около **158 ток/с** для Llama-3-8B в 4 битах на RTX 4090 с бэкендом GemLite ([README](https://github.com/mobiusml/hqq)). HQQ удобен, когда надо быстро получить 4-битную модель и прогнать её в Transformers/vLLM; для 1–2 бит лучше HQQ+ с LoRA-адаптерами.
+[HQQ](https://github.com/dropbox/hqq) — Apache-2.0, около 1 тыс. звёзд, последний коммит февраль 2026. Это не рантайм, а быстрый квантователь: 8/4/3/2/1 бит, **без калибровочных данных**, за минуты. Авторы заявляют около **158 ток/с** для Llama-3-8B в 4 битах на RTX 4090 с бэкендом GemLite ([README](https://github.com/dropbox/hqq)). HQQ удобен, когда надо быстро получить 4-битную модель и прогнать её в Transformers/vLLM; для 1–2 бит лучше HQQ+ с LoRA-адаптерами.
 
 ### AQLM и QTIP
 
@@ -307,7 +307,7 @@ flowchart TB
 
 - **MTP-голова** Qwen3.8-Flash-Next черновит до 3 токенов; Strata заявляет 2,4–3,2 принятых токена за проход и 1,6–1,8× ускорения;
 - **DFlash2** используется в Splash и HyperQwen; HyperQwen заявляет 381 ток/с, когда ответ цитирует промпт, и 127 ток/с в обычном режиме;
-- **DSpark** — отдельный маленький черновик для DeepSeek V4.1; на RTX 3060 поднимает 6,1–6,7 до 8,2–8,7 ток/с, на четырёх R9700 даёт 55–69 ток/с вместо ~31, а на RTX 5070 с 6-ядерным CPU выигрыша не даёт;
+- **DSpark** — отдельный маленький черновик для DeepSeek V4.1; по MODELS.md (2.00 bpw, Strata 0.2.4) на RTX 3060 поднимает 6,1–6,7 до 8,2–8,7 ток/с, на четырёх R9700 даёт 55–69 ток/с вместо ~31, а на RTX 5070 с 6-ядерным CPU выигрыша не даёт;
 - **lookup/ngram** — поиск по уже сгенерированному тексту; Strata включает его только там, где принятие окупается: правки кода — 6–11%, обычный текст — без изменений.
 
 Все эти числа — самозаявленные. Независимый эффект обычно ниже: спекуляция помогает на предсказуемом тексте (код, JSON, цитаты) и почти не помогает на свободной прозе.
@@ -318,7 +318,7 @@ KV-кэш — вторая по величине часть памяти пос�
 
 - В llama.cpp `--kv-offload` включён по умолчанию; `--no-kv-offload` оставляет KV в ОЗУ, освобождая VRAM; `-ctk/-ctv q8_0` сжимает кэш примерно вдвое ([server README](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md)).
 - Strata хранит KV в int8, а `--kv-resident N` держит в VRAM только N ячеек на слой, остальное — в закреплённом ОЗУ; по логам 97% чтений KV всё равно попадают в VRAM. Но независимый замер показал, что `--kv-resident` может быть на 13–20% медленнее `--kv-grow` даже при коротком контексте ([issue #4815](https://github.com/Niko1221/Strata/issues/4815)).
-- LMCache заявляет 10× ускорение MoE-инференса за счёт offload KV в vLLM; это vendor-блог, независимой проверки я не нашёл ([LMCache](https://blog.lmcache.ai/en/2026/04/03/lmcaches-new-architecture-boosts-moe-inference-performance-by-10x/)).
+- LMCache заявляет 10× по p99 TTFT (13,55 → 1,30 с); средний декод при этом ускоряется примерно в 3,8× (37,47 против 9,81 ток/с). Это vendor-блог, независимой проверки я не нашёл ([LMCache](https://blog.lmcache.ai/en/2026/04/03/lmcaches-new-architecture-boosts-moe-inference-performance-by-10x/)).
 
 Главное: KV-кэш помогает длинному контексту, но не делает модель меньше. Если веса не влезают, выгрузка KV даст несколько гигабайт, а не десятки.
 
@@ -328,17 +328,17 @@ KV-кэш — вторая по величине часть памяти пос�
 
 [FastFlowLM](https://github.com/ROCm/FastFlowLM) (FLM) — NPU-first рантайм для AMD Ryzen AI (XDNA2: Strix, Strix Halo, Kraken, Gorgon). Около 2 тыс. звёзд, активен, лицензия смешанная: оркестрация MIT, NPU-ядра — проприетарные бинарники, бесплатные для использования ([README](https://github.com/ROCm/FastFlowLM)).
 
-В официальном бенчмарке на Ryzen AI 5 340 (Kraken Point, 64 ГБ): Qwen3.8-27B даёт **2,04–2,70 ток/с** декода, prefill **105–113 ток/с**, TTFT **9,35 с** на 1K и **68,7 с** на 8K ([бенчмарк](https://fastflowlm.com/docs/benchmarks/qwen3.8_results/)). Это важный отрезвляющий факт: 27B на NPU **работает**, но в разы медленнее, чем на видеокарте. NPU выигрывает по энергии и prefill, а не по декоду большой модели.
+В официальном бенчмарке AMD на Ryzen AI 5 340 (Kraken Point, 64 ГБ): Qwen3.8-27B даёт **2,04–2,70 ток/с** декода, prefill **105–113 ток/с**, TTFT **9,35 с** на 1K и **68,7 с** на 8K ([бенчмарк](https://fastflowlm.com/docs/benchmarks/qwen3.8_results/)). Это **самозаявленные** числа; независимой проверки я не нашёл. Важный отрезвляющий факт: 27B на NPU **работает**, но в разы медленнее, чем на видеокарте. NPU выигрывает по энергии и prefill, а не по декоду большой модели.
 
 ### Apple Neural Engine
 
-[ANEMLL](https://github.com/Anemll/Anemll) — открытый пайплайн конвертации LLM в CoreML для ANE: LLaMA 3.1/3.2 (1B, 8B), Qwen 3 (0.6B, 1.7B), Gemma 3 (270M–4B), DeepSeek R1 Distill 8B. Версия 0.3.5 beta, около 1,7 тыс. звёзд, активен. Ограничения: контекст обычно до 4K, LUT4-квантование заметно снижает качество, **лицензия в репозитории не указана** — это отдельный риск ([README](https://github.com/Anemll/Anemll)).
+[ANEMLL](https://github.com/Anemll/Anemll) — открытый пайплайн конвертации LLM в CoreML для ANE: LLaMA 3.1/3.2 (1B, 8B), Qwen 3 (0.6B, 1.7B), Gemma 3 (270M–4B), DeepSeek R1 Distill 8B. Версия 0.3.5 beta, около 1,7 тыс. звёзд, активен. Ограничения: контекст обычно до 4K, LUT4-квантование заметно снижает качество, **MIT заявлен в README, но отдельного LICENSE-файла нет** — проверьте перед коммерческим использованием ([README](https://github.com/Anemll/Anemll)).
 
 ANE хорошо работает для небольших моделей и prefill; Splash использует его для prefill 27B. Но это не способ запустить 70B: память общая с CPU/GPU, а конвертация и качество квантования требуют отдельной проверки.
 
 ### Intel NPU
 
-Intel NPU (AI Boost) поддерживается через OpenVINO GenAI. В препринте 2026 года Llama 3.1 8B INT4 на Lunar Lake NPU даёт **3,55 ток/с** при одном слоте и **11,46 ток/с** при четырёх слотах ([arXiv:2608.19147](https://arxiv.org/html/2608.19147v1)). Гибрид «NPU prefill + CPU decode» даёт около 9,3 ток/с ([Cascadia](https://cascadia.to/blog/where-npus-fit-into-llm-inference)). При этом INT8 weight-only модели на NPU в OpenVINO 2026.0 могли падать с access violation — проверяйте версию и формат ([issue #35641](https://github.com/openvinotoolkit/openvino/issues/35641)).
+Intel NPU (AI Boost) поддерживается через OpenVINO GenAI. В препринте 2026 года о pipeline-шардах для Intel AI PC Llama 3.1 8B INT4 на Lunar Lake NPU даёт **3,55 ток/с** при одном слоте и **11,46 ток/с** при четырёх; это aggregate throughput двухстадийного шарда, §8.6 ([arXiv:2608.19147, §8.6](https://arxiv.org/html/2608.19147v1#S8.SS6)). Гибрид «NPU prefill + CPU decode» даёт около 9,3 ток/с ([Cascadia](https://cascadia.to/blog/where-npus-fit-into-llm-inference)). При этом INT8 weight-only модели на NPU в OpenVINO 2026.0 могли падать с access violation — проверяйте версию и формат ([issue #35641](https://github.com/openvinotoolkit/openvino/issues/35641)).
 
 ### iGPU и объединённая память
 
@@ -364,7 +364,7 @@ AMD Strix Halo (Ryzen AI Max+ 395) — 128 ГБ объединённой пам�
 |---|---:|---|---|---|---|
 | [Strata](https://github.com/Niko1221/Strata) | 41,2 тыс. | 07.11.2026 | MIT | Qwen3.8-Flash-Next, Qwen3.6-35B-A3B, DeepSeek V4.1 | Windows, Linux, macOS |
 | [ktransformers](https://github.com/kvcache-ai/ktransformers) | 19,7 тыс. | 06.11.2026 | Apache-2.0 | DeepSeek V4, Kimi K2.5/2.6, GLM-5.3, MiniMax M3, Qwen3-Next | Linux x86-64 |
-| [PowerInfer](https://github.com/SJTU-IPADS/PowerInfer) | 9,9 тыс. | 11.05.2026 | MIT | ReLU: Falcon-40B, Llama2, ProSparse, Bamboo | Linux, Windows, macOS (CPU) |
+| [PowerInfer](https://github.com/Tiiny-AI/PowerInfer) | 9,9 тыс. | 11.05.2026 | MIT | ReLU: Falcon-40B, Llama2, ProSparse, Bamboo | Linux, Windows, macOS (CPU) |
 | [AirLLM](https://github.com/lyogavin/airllm) | 41,9 тыс. | 07.11.2026 | Apache-2.0 | почти любые HF-модели (macOS — Llama-style) | Linux, macOS |
 | [exo](https://github.com/exo-explore/exo) | 48,2 тыс. | 06.11.2026 | Apache-2.0 | MLX-модели: Qwen, DeepSeek, Kimi | macOS, Linux |
 | [Petals](https://github.com/bigscience-workshop/petals) | 10,7 тыс. | 07.09.2024 | MIT | Llama 3.1 405B, Mixtral 8x22B, BLOOM 176B | Linux, macOS, WSL |
@@ -372,13 +372,13 @@ AMD Strix Halo (Ryzen AI Max+ 395) — 128 ГБ объединённой пам�
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) | 133,6 тыс. | 07.11.2026 | MIT | GGUF, почти все архитектуры | все |
 | [MLC LLM](https://github.com/mlc-ai/mlc-llm) | 23,3 тыс. | 30.10.2026 | Apache-2.0 | Llama, Qwen, Gemma, Phi и др. | iOS, Android, WebGPU, desktop |
 | [WebLLM](https://github.com/mlc-ai/web-llm) | 19,4 тыс. | 03.11.2026 | Apache-2.0 | Llama 3, Phi 3, Gemma, Mistral, Qwen2 | браузер (WebGPU) |
-| [HQQ](https://github.com/mobiusml/hqq) | 0,96 тыс. | 26.02.2026 | Apache-2.0 | любые HF-модели | CUDA/CPU |
+| [HQQ](https://github.com/dropbox/hqq) | 0,96 тыс. | 26.02.2026 | Apache-2.0 | любые HF-модели | CUDA/CPU |
 | [AQLM](https://github.com/Vahe1994/AQLM) | 1,3 тыс. | 26.02.2026 | Apache-2.0 | Llama, Mistral, Mixtral | CUDA/CPU |
 | [Splash](https://github.com/incoai/splash) | 2,1 тыс. | 06.11.2026 | Apache-2.0 | Qwen3.8-27B, 35B-A3B, Flash-Next, Ornith, Flint | macOS 26.4+, M3+ |
 | [NInfer](https://github.com/Neroued/ninfer) | 3,3 тыс. | 07.11.2026 | Apache-2.0 | Qwen3.6/3.8-27B, 35B-A3B, Flash-Next, GLM-5.3 | Linux, RTX 5090/DGX Spark |
 | [HyperQwen](https://github.com/syv-ai/HyperQwen) | 2,6 тыс. | 03.11.2026 | Apache-2.0 | Qwen3.8-27B | Linux, NVIDIA 24 ГБ |
 | [FastFlowLM](https://github.com/ROCm/FastFlowLM) | 2,0 тыс. | 07.11.2026 | смешанная | LLaMA, Qwen, Gemma, gpt-oss, Phi, DeepSeek | Windows, Linux (Ryzen AI) |
-| [ANEMLL](https://github.com/Anemll/Anemll) | 1,7 тыс. | 31.10.2026 | не указана | LLaMA 3.x, Qwen 3, Gemma 3, DeepSeek R1 8B | macOS, iOS |
+| [ANEMLL](https://github.com/Anemll/Anemll) | 1,7 тыс. | 31.10.2026 | MIT (в README, без LICENSE) | LLaMA 3.x, Qwen 3, Gemma 3, DeepSeek R1 8B | macOS, iOS |
 | [distributed-llama](https://github.com/b4rtaz/distributed-llama) | 3,1 тыс. | 07.11.2026 | MIT | Llama 3.x, Qwen 3, Qwen3 MoE | Linux, macOS, Windows |
 
 **Релизы, на которые стоит смотреть:** Strata v0.2.12 (7 ноября 2026), ktransformers v0.7.0 (17 августа 2026), AirLLM v3.0 (июнь 2026), FastFlowLM 1.0.0 (11 августа 2026), exo 1.0 (декабрь 2025), Splash 1.6.0 (6 ноября 2026), bitnet.cpp 1.0 (октябрь 2024). У NInfer и HyperQwen пока нет версий — они живут в `main`. У llama.cpp, MLC и WebLLM релизы выходят часто; фиксируйте коммит или тег, а не «последнюю версию».
@@ -444,7 +444,7 @@ AMD Strix Halo (Ryzen AI Max+ 395) — 128 ГБ объединённой пам�
 **Контрольные суммы и версии.**
 - Скачивайте релизы с официального GitHub/Hugging Face, проверяйте `SHA256SUMS` или хеш из карточки модели; фиксируйте версию/коммит.
 - Не берите «оптимизированные» бинарники с форумов и зеркал; если очень надо — прогоните через VirusTotal и запускайте в песочнице без доступа к вашим файлам.
-- Проверяйте лицензию: у ANEMLL её нет, у FastFlowLM NPU-ядра проприетарные, у моделей — свои лицензии. «MIT» на движке не делает модель MIT.
+- Проверяйте лицензию: у ANEMLL MIT заявлен в README, но отдельного LICENSE-файла нет; у FastFlowLM NPU-ядра проприетарные; у моделей — свои лицензии. «MIT» на движке не делает модель MIT.
 
 **Ресурсы.**
 - Оставляйте 1,5–2 ГБ VRAM свободными (правило главы 3); следите за пиком, а не за состоянием после загрузки.
@@ -512,9 +512,9 @@ AMD Strix Halo (Ryzen AI Max+ 395) — 128 ГБ объединённой пам�
 
 - **Strata** — [GitHub](https://github.com/Niko1221/Strata), [How it works](https://github.com/Niko1221/Strata/blob/main/docs/HOW_IT_WORKS.md), [Models](https://github.com/Niko1221/Strata/blob/main/docs/MODELS.md), [DeepSeek V4.1](https://github.com/Niko1221/Strata/blob/main/docs/DEEPSEEK41.md), [issue #4815](https://github.com/Niko1221/Strata/issues/4815). Движок, документация и независимый пользовательский замер.
 - **Fabio Akita, «Best Open Source LLM: Strata with Qwen 3.8 Flash Next» (2026)** — [akitaonrails.com](https://akitaonrails.com/en/2026/10/22/best-open-source-llm-strata-with-qwen-3-8-flash-next/). Независимый обзор и замеры на RTX 5090 и Strix Halo.
-- **Benjamin Marie, «Qwen3.8 Flash Next Review» (2026)** — [kaitchup.substack.com](https://kaitchup.substack.com/p/qwen38-flash-next-review-benchmarks). Архитектура 125B-A6B, 51B n-gram-таблица и 4B MTP; часть материала за платным доступом.
+- **Benjamin Marie, «Qwen3.8 Flash Next Review» (2026)** — [kaitchup.substack.com](https://kaitchup.substack.com/p/qwen38-flash-next-review-benchmarks). Доп. чтение: в лиде — 125B-A6B, 51B n-gram-таблица и 4B MTP; бенчмарки за пейволом.
 - **ktransformers** — [GitHub](https://github.com/kvcache-ai/ktransformers), [DeepSeek R1/V3 tutorial](https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md). CPU-GPU гибрид, AMX/AVX-512, цифры команды.
-- **PowerInfer** — [GitHub](https://github.com/SJTU-IPADS/PowerInfer), [arXiv:2312.12456](https://arxiv.org/abs/2312.12456); **PowerInfer-2** — [arXiv:2406.06282](https://arxiv.org/abs/2406.06282). Горячие/холодные нейроны и смартфонный вариант.
+- **PowerInfer** — [GitHub](https://github.com/Tiiny-AI/PowerInfer), [arXiv:2312.12456](https://arxiv.org/abs/2312.12456); **PowerInfer-2** — [arXiv:2406.06282](https://arxiv.org/abs/2406.06282). Горячие/холодные нейроны и смартфонный вариант.
 - **AirLLM** — [GitHub](https://github.com/lyogavin/airllm). Послойная загрузка; независимые замеры: [dev.to](https://dev.to/arshtechpro/airllm-runs-a-70b-model-on-a-4gb-gpu-its-true-and-thats-not-the-interesting-part-hha), [Mac Mini](https://kunalvohra.com/blog/airllm-on-a-16gb-mac-mini).
 - **Alizadeh et al., «LLM in a flash» (2023)** — [arXiv:2312.11514](https://arxiv.org/abs/2312.11514). Windowing и row-column bundling.
 - **MoE-Infinity** — [arXiv:2401.14361](https://arxiv.org/abs/2401.14361), [GitHub](https://github.com/EfficientMoE/MoE-Infinity); **ExpertFlow** — [arXiv:2410.17954](https://arxiv.org/abs/2410.17954). Предсказание и кэш экспертов.
@@ -522,10 +522,10 @@ AMD Strix Halo (Ryzen AI Max+ 395) — 128 ГБ объединённой пам�
 - **llama.cpp RPC** — [tools/rpc/README.md](https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/README.md), [обсуждение #9136](https://github.com/ggml-org/llama.cpp/discussions/9136); **llama.cpp server** — [tools/server/README.md](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md). RPC, `--n-cpu-moe`, `--moe-cache-mib`, KV.
 - **Petals** — [GitHub](https://github.com/bigscience-workshop/petals); **distributed-llama** — [GitHub](https://github.com/b4rtaz/distributed-llama). Распределённый инференс на домашних устройствах.
 - **BitNet b1.58** — [arXiv:2402.17764](https://arxiv.org/abs/2402.17764); **bitnet.cpp** — [GitHub](https://github.com/microsoft/BitNet), [arXiv:2410.16144](https://arxiv.org/abs/2410.16144). Тернарные модели и CPU-ядра.
-- **HQQ** — [GitHub](https://github.com/mobiusml/hqq); **AQLM** — [GitHub](https://github.com/Vahe1994/AQLM), [arXiv:2401.06118](https://arxiv.org/abs/2401.06118); **QTIP** — [arXiv:2406.11235](https://arxiv.org/abs/2406.11235). Экстремальное квантование.
+- **HQQ** — [GitHub](https://github.com/dropbox/hqq); **AQLM** — [GitHub](https://github.com/Vahe1994/AQLM), [arXiv:2401.06118](https://arxiv.org/abs/2401.06118); **QTIP** — [arXiv:2406.11235](https://arxiv.org/abs/2406.11235). Экстремальное квантование.
 - **Deja Vu** — [arXiv:2310.17157](https://arxiv.org/abs/2310.17157); **CATS** — [arXiv:2404.08763](https://arxiv.org/abs/2404.08763). Разреженность активаций.
 - **Splash** — [GitHub](https://github.com/incoai/splash); **NInfer** — [GitHub](https://github.com/Neroued/ninfer); **HyperQwen** — [GitHub](https://github.com/syv-ai/HyperQwen). Движки под одну модель.
 - **FastFlowLM** — [GitHub](https://github.com/ROCm/FastFlowLM), [бенчмарк Qwen3.8](https://fastflowlm.com/docs/benchmarks/qwen3.8_results/); **ANEMLL** — [GitHub](https://github.com/Anemll/Anemll). NPU/ANE.
-- **Intel NPU** — [arXiv:2608.19147](https://arxiv.org/html/2608.19147v1), [OpenVINO issue #35641](https://github.com/openvinotoolkit/openvino/issues/35641), [Cascadia](https://cascadia.to/blog/where-npus-fit-into-llm-inference). NPU на Lunar Lake.
+- **Intel NPU** — [arXiv:2608.19147, §8.6](https://arxiv.org/html/2608.19147v1#S8.SS6), [OpenVINO issue #35641](https://github.com/openvinotoolkit/openvino/issues/35641), [Cascadia](https://cascadia.to/blog/where-npus-fit-into-llm-inference). NPU на Lunar Lake: 3,55 → 11,46 ток/с на четырёх слотах.
 - **WebLLM** — [GitHub](https://github.com/mlc-ai/web-llm), [arXiv:2412.15803](https://arxiv.org/abs/2412.15803); **MLC LLM** — [GitHub](https://github.com/mlc-ai/mlc-llm). WebGPU и мобильные движки.
-- **LMCache** — [блог](https://blog.lmcache.ai/en/2026/04/03/lmcaches-new-architecture-boosts-moe-inference-performance-by-10x/). Vendor-заявление об offload KV (не независимая проверка).
+- **LMCache** — [блог](https://blog.lmcache.ai/en/2026/04/03/lmcaches-new-architecture-boosts-moe-inference-performance-by-10x/). Vendor-заявление об offload KV: 10× по p99 TTFT, декод — около 3,8× (не независимая проверка).
