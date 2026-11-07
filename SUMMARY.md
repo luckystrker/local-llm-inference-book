@@ -16,6 +16,7 @@
 - [12. Методика бенчмарка и тюнинга](12-benchmark-methodology.md)
 - [13. Выбор модели под железо](13-model-selection.md)
 - [14. Речь и OCR локально](14-speech-ocr.md)
+- [Новые эксперименты: большие модели на маленьком железе](big-models-small-hardware.md)
 - [15. Куда расти](15-where-to-go-next.md)
 - [16. Глоссарий](16-glossary.md)
 - [Приложение. Частые заблуждения](fallacies.md)
