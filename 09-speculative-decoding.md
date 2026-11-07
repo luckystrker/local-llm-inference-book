@@ -82,7 +82,7 @@ speedup ≈ 3,36 / (1 + 0,2) = 2,8
 
 ## 9.5 Откуда взять черновик
 
-Сразу оговорка про llama.cpp: в нём реализованы `draft-simple` (отдельная модель), `draft-eagle3`, `draft-mtp` и n-граммные варианты (`ngram-simple`, `ngram-cache`, `ngram-mod` и др.), а также более новые `draft-dflash`/`draft-dspark`. Medusa и EAGLE-1/2 в llama.cpp нет — это архитектурный экскурс, а не готовые флаги.
+Сразу оговорка про llama.cpp: в нём реализованы `draft-simple` (отдельная модель), `draft-eagle3` (для ограниченного набора архитектур), `draft-mtp` и n-граммные варианты (`ngram-simple`, `ngram-cache`, `ngram-mod` и др.), а также более новые `draft-dflash`/`draft-dspark`. Medusa и EAGLE-1/2 в llama.cpp нет — это архитектурный экскурс, а не готовые флаги.
 
 ### Отдельная маленькая модель
 
