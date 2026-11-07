@@ -68,7 +68,7 @@
 - **llama.cpp PR #4861, «Importance Matrix calculation»** — ggml-org, 2024. [GitHub](https://github.com/ggml-org/llama.cpp/pull/4861). Уровень: продвинутый. Зачем: как работает imatrix.
 - **llama.cpp, `tools/quantize/README.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md). Уровень: средний. Зачем: практические команды квантования.
 - **llama.cpp Discussion #5063, «Even more quantization types?»** — ggml-org, 2023. [GitHub](https://github.com/ggml-org/llama.cpp/discussions/5063). Уровень: продвинутый. Зачем: эволюция типов и компромиссы.
-- **«Unsloth Dynamic GGUFs»** — Unsloth. [docs.unsloth.ai](https://docs.unsloth.ai/basics/unsloth-dynamic-2.0-ggufs). Уровень: средний. Зачем: динамические кванты; заявления авторов, не независимая проверка.
+- **«Unsloth Dynamic GGUFs»** — Unsloth. [docs.unsloth.ai](https://docs.unsloth.ai/basics/dynamic-3.0-ggufs). Уровень: средний. Зачем: динамические кванты; заявления авторов, не независимая проверка.
 - **«Making LLMs even more accessible with bitsandbytes, 4-bit quantization and QLoRA»** — Hugging Face, 2023. [блог](https://huggingface.co/blog/4bit-transformers-bitsandbytes). Уровень: новичок–средний. Зачем: доступное введение в 4-битное квантование.
 - **Transformers quantization overview** — Hugging Face. [docs](https://huggingface.co/docs/transformers/main/en/quantization/overview). Уровень: средний. Зачем: карта форматов и библиотек.
 
@@ -90,7 +90,7 @@
 - **«GQA»** — Ainslie et al., 2023. [arXiv:2305.13245](https://arxiv.org/abs/2305.13245). Уровень: продвинутый. Зачем: групповые KV-головы.
 - **«Fast Transformer Decoding: One Write-Head is All You Need»** — Shazeer, 2019. [arXiv:1911.02150](https://arxiv.org/abs/1911.02150). Уровень: продвинутый. Зачем: MQA.
 - **«DeepSeek-V2»** — DeepSeek-AI, 2024. [arXiv:2405.04434](https://arxiv.org/abs/2405.04434). Уровень: продвинутый. Зачем: MLA и сжатие KV.
-- **«Gated Delta Networks»** — Yang, Kautz, Hatamizadeh, 2024. [arXiv:2412.06464](https://arxiv.org/abs/2412.06464). Уровень: продвинутый. Зачем: гибридное линейное внимание.
+- **«Gated Delta Networks: Improving Mamba2 with Delta Rule»** — Yang, Kautz, Hatamizadeh, 2024. [arXiv:2412.06464](https://arxiv.org/abs/2412.06464). Уровень: продвинутый. Зачем: гибридное линейное внимание; в тексте книги — Gated DeltaNet.
 - **«Transformers are RNNs»** — Katharopoulos et al., 2020. [arXiv:2006.16236](https://arxiv.org/abs/2006.16236). Уровень: продвинутый. Зачем: линейное внимание.
 - **«Mamba»** — Gu, Dao, 2023. [arXiv:2312.00752](https://arxiv.org/abs/2312.00752). Уровень: продвинутый. Зачем: state-space модели.
 - **«H2O: Heavy-Hitter Oracle»** — Zhang et al., 2023. [arXiv:2306.14048](https://arxiv.org/abs/2306.14048). Уровень: продвинутый. Зачем: вытеснение неважных токенов из KV.
@@ -161,7 +161,7 @@
 
 - **«Robust Speech Recognition via Large-Scale Weak Supervision»** — Radford et al., 2022. [arXiv:2212.04356](https://arxiv.org/abs/2212.04356). Уровень: продвинутый. Зачем: оригинальная статья Whisper.
 - **whisper.cpp** — ggml-org. [GitHub](https://github.com/ggml-org/whisper.cpp). Уровень: средний. Зачем: локальный запуск Whisper без Python.
-- **«GigaAM: Efficient Self-Supervised Learner for Speech Recognition»** — Kutsakov et al., 2025. [arXiv:2506.01192](https://arxiv.org/abs/2506.01192). Уровень: продвинутый. Зачем: русская ASR-модель и сравнение с Whisper.
+- **«GigaAM: Efficient Self-Supervised Learner for Speech Recognition»** — Kutsakov et al., 2025. [arXiv:2506.01192](https://arxiv.org/abs/2506.01192). Уровень: продвинутый. Зачем: ASR-модель, обученная преимущественно на русской речи по данным авторов, и сравнение с Whisper-large-v3.
 - **Silero VAD** — Silero. [GitHub](https://github.com/snakers4/silero-vad). Уровень: средний. Зачем: лёгкий детектор речи.
 - **Tesseract documentation** — Tesseract OCR. [tesseract-ocr.github.io](https://tesseract-ocr.github.io/). Уровень: новичок. Зачем: установка и языковые пакеты.
 - **«PP-OCR: A Practical Ultra Lightweight OCR System»** — Du et al., 2020. [arXiv:2009.09941](https://arxiv.org/abs/2009.09941). Уровень: продвинутый. Зачем: архитектура PP-OCR.
