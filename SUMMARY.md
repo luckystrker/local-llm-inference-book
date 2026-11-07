@@ -15,6 +15,7 @@
 - [11. Вызов инструментов: шаблоны чата, грамматики, JSON Schema](11-tool-calling.md)
 - [12. Методика бенчмарка и тюнинга](12-benchmark-methodology.md)
 - [13. Выбор модели под железо](13-model-selection.md)
+- [Как выбрать железо для локального инференса](hardware-choice.md)
 - [14. Речь и OCR локально](14-speech-ocr.md)
 - [Новые эксперименты: большие модели на маленьком железе](big-models-small-hardware.md)
 - [15. Куда расти](15-where-to-go-next.md)
