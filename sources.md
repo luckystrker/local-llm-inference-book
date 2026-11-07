@@ -213,6 +213,7 @@
 - **Авито, RTX 4090** — 07.11.2026. [avito.ru](https://www.avito.ru/all/tovary_dlya_kompyutera/komplektuyuschie/videokarty/geforce_rtx_4090-ASgBAgICA0TGB~pm7gmmZ8KsFIji_RQ). Уровень: справка. Зачем: б/у 145–270 тыс. ₽.
 - **Apple-store.net.ru, Mac mini** — 07.11.2026. [apple-store.net.ru](https://apple-store.net.ru/mac/apple-mac-mini). Уровень: справка. Зачем: Mac mini M5 Pro 215–280 тыс. ₽.
 - **Megabait, Mac Studio** — 07.11.2026. [megabait.net](https://megabait.net/categories/katalog-epl/tag/mac-studio). Уровень: справка. Зачем: Mac Studio M5 Max 36–128 ГБ, цены.
+- **RunPod — RTX 4090** — 2026. [runpod.io](https://www.runpod.io/gpu-models/rtx-4090). Уровень: справка. Зачем: аренда 4090 около $0,34/ч; использована для сравнения с 2×3090.
 - **Selectel, GPU-серверы** — 2026. [selectel.ru](https://selectel.ru/services/gpu). Уровень: справка. Зачем: 2×4090 210 ₽/ч, RTX PRO 6000 290 ₽/ч.
 - **HOSTKEY, аренда H100/A100** — 31.08.2026. [hostkey.ru](https://hostkey.ru/news/105-arendujte-moshchnyj-gpu-server-s-kartoj-nvidia-h100-za-207-rubchas). Уровень: справка. Зачем: H100 207 ₽/ч, A100 153 ₽/ч.
 - **Fusion Worldwide, «RDIMM Shortage 2026»** — 2026. [fusionww.com](https://www.fusionww.com/insights/rdimm-shortages-and-the-shift-in-server-shipments). Уровень: средний. Зачем: рост цен DRAM и RDIMM, причина подорожания железа.
