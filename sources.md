@@ -171,6 +171,42 @@
 - **RapidOCR** — RapidAI. [GitHub](https://github.com/RapidAI/RapidOCR). Уровень: средний. Зачем: ONNX-порт для практического запуска.
 - **PaddleOCR** — PaddlePaddle. [GitHub](https://github.com/PaddlePaddle/PaddleOCR). Уровень: средний. Зачем: полный инструментарий OCR.
 
+## Большие модели на маленьком железе (2026)
+
+- **Strata** — Niko1221, 2026. [GitHub](https://github.com/Niko1221/Strata), [How it works](https://github.com/Niko1221/Strata/blob/main/docs/HOW_IT_WORKS.md), [Models](https://github.com/Niko1221/Strata/blob/main/docs/MODELS.md), [DeepSeek V4.1](https://github.com/Niko1221/Strata/blob/main/docs/DEEPSEEK41.md). Уровень: продвинутый. Зачем: устройство экспертного кэша, требования к памяти и самозаявленные замеры; MIT, но проект очень молодой.
+- **«Best Open Source LLM: Strata with Qwen 3.8 Flash Next»** — Fabio Akita, 2026. [akitaonrails.com](https://akitaonrails.com/en/2026/10/22/best-open-source-llm-strata-with-qwen-3-8-flash-next/). Уровень: средний. Зачем: независимый обзор и замеры на RTX 5090 и Strix Halo; 159 ток/с, 90–97% попаданий, цена в ОЗУ и swap.
+- **Strata issue #4815** — пользовательский замер на RTX 5080 16 ГБ. [GitHub](https://github.com/Niko1221/Strata/issues/4815). Уровень: продвинутый. Зачем: пример независимой проверки флага `--kv-resident` и его реальной цены.
+- **«Qwen3.8 Flash Next Review: Benchmarks, Architecture, Memory Requirements, and Local Inference»** — Benjamin Marie, 2026. [kaitchup.substack.com](https://kaitchup.substack.com/p/qwen38-flash-next-review-benchmarks). Уровень: средний. Зачем: 125B-A6B, 51B n-gram-таблица и 4B MTP-модуль; лид доступен, бенчмарки и расчёты памяти — за пейволом.
+- **KTransformers** — kvcache-ai, 2024–2026. [GitHub](https://github.com/kvcache-ai/ktransformers), [DeepSeek R1/V3 tutorial](https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md). Уровень: продвинутый. Зачем: CPU-GPU гибрид, AMX/AVX-512, цифры для 671B на 14 ГБ VRAM и 382 ГБ DRAM.
+- **«PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU»** — Song et al., 2023. [arXiv:2312.12456](https://arxiv.org/abs/2312.12456), [GitHub](https://github.com/Tiiny-AI/PowerInfer). Уровень: продвинутый. Зачем: горячие и холодные нейроны; важно ограничение — только ReLU-модели.
+- **«PowerInfer-2: Fast Large Language Model Inference on a Smartphone»** — Xue et al., 2024. [arXiv:2406.06282](https://arxiv.org/abs/2406.06282). Уровень: продвинутый. Зачем: нейронные кластеры и смартфонный инференс; исследовательская работа, не массовый рантайм.
+- **AirLLM** — lyogavin, 2023–2026. [GitHub](https://github.com/lyogavin/airllm). Уровень: средний. Зачем: послойная загрузка и честная цена в скорости; заявления «70B на 4 ГБ» требуют независимой проверки.
+- **«LLM in a flash: Efficient Large Language Model Inference with Limited Memory»** — Alizadeh et al., 2023. [arXiv:2312.11514](https://arxiv.org/abs/2312.11514). Уровень: продвинутый. Зачем: windowing, row-column bundling и потолок SSD-стриминга.
+- **«MoE-Infinity: Efficient MoE Inference on Personal Machines with Sparsity-Aware Expert Cache»** — Xue et al., 2024. [arXiv:2401.14361](https://arxiv.org/abs/2401.14361), [GitHub](https://github.com/EfficientMoE/MoE-Infinity). Уровень: продвинутый. Зачем: кэш экспертов и предзагрузка для batch=1; открытый код, по README, отличается от версии из статьи.
+- **«ExpertFlow: Efficient Mixture-of-Experts Inference via Predictive Expert Caching and Token Scheduling»** — 2024. [arXiv:2410.17954](https://arxiv.org/abs/2410.17954). Уровень: продвинутый. Зачем: предсказание маршрутизации, до 93,72% экономии памяти GPU и до 10× в abstract.
+- **exo** — exo labs, 2024–2026. [GitHub](https://github.com/exo-explore/exo). Уровень: средний. Зачем: домашний кластер Mac, tensor parallel и RDMA over Thunderbolt.
+- **«1.5 TB of VRAM on Mac Studio — RDMA over Thunderbolt 5»** — Jeff Geerling, 2025. [jeffgeerling.com](https://www.jeffgeerling.com/blog/2025/15-tb-vram-on-mac-studio-rdma-over-thunderbolt-5). Уровень: средний. Зачем: независимые замеры exo на четырёх Mac Studio и сравнение с llama.cpp RPC.
+- **llama.cpp, `tools/rpc/README.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/README.md). Уровень: продвинутый. Зачем: RPC-бэкенд, TCP/RDMA и предупреждение о небезопасности.
+- **llama.cpp, `tools/server/README.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md). Уровень: средний. Зачем: `--n-cpu-moe`, `--moe-cache-mib`, KV offload и квантование KV.
+- **Petals** — bigscience-workshop, 2022–2024. [GitHub](https://github.com/bigscience-workshop/petals). Уровень: средний. Зачем: BitTorrent-подобный распределённый инференс; проект не развивается с 2024 года.
+- **distributed-llama** — b4rtaz, 2023–2026. [GitHub](https://github.com/b4rtaz/distributed-llama). Уровень: средний. Зачем: кластер из домашних устройств, tensor parallelism, ограничения Q4_0 и 2^n узлов.
+- **«The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits»** — Ma et al., 2024. [arXiv:2402.17764](https://arxiv.org/abs/2402.17764). Уровень: продвинутый. Зачем: тернарные веса и обучение с нуля; не путать с пост-тренировочным квантованием.
+- **bitnet.cpp** — Microsoft, 2024–2026. [GitHub](https://github.com/microsoft/BitNet), [arXiv:2410.16144](https://arxiv.org/abs/2410.16144). Уровень: продвинутый. Зачем: CPU/GPU-ядра для BitNet b1.58, ускорения и энергия; 100B-модель пока не выложена.
+- **HQQ** — dropbox, 2023–2026. [GitHub](https://github.com/dropbox/hqq). Уровень: средний. Зачем: быстрое квантование без калибровки, 1–8 бит; 4-битный пример на 4090.
+- **AQLM** — Vahe1994, 2024–2026. [GitHub](https://github.com/Vahe1994/AQLM), [arXiv:2401.06118](https://arxiv.org/abs/2401.06118). Уровень: продвинутый. Зачем: аддитивное квантование на 2–3 бита и качество Llama-3-70B.
+- **«QTIP: Quantization with Trellises and Incoherence Processing»** — 2024. [arXiv:2406.11235](https://arxiv.org/abs/2406.11235). Уровень: продвинутый. Зачем: trellis-квантование и SOTA на 2 битах; исследование.
+- **«Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time»** — Liu et al., 2023. [arXiv:2310.17157](https://arxiv.org/abs/2310.17157), [GitHub](https://github.com/FMInference/DejaVu). Уровень: продвинутый. Зачем: контекстная разреженность и предсказатель.
+- **«CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models»** — 2024. [arXiv:2404.08763](https://arxiv.org/abs/2404.08763). Уровень: продвинутый. Зачем: 50% разреженности при 1–2% потери и ~15% реального ускорения.
+- **Splash** — incoai, 2026. [GitHub](https://github.com/incoai/splash). Уровень: средний. Зачем: Apple Silicon, DFlash2, Metal и ANE; самозаявленные замеры на M5 Pro.
+- **NInfer** — Neroued, 2026. [GitHub](https://github.com/Neroued/ninfer). Уровень: продвинутый. Зачем: RTX 5090/DGX Spark, CPU expert offload и 101 ГиБ Flash-Next.
+- **HyperQwen** — syv-ai, 2026. [GitHub](https://github.com/syv-ai/HyperQwen). Уровень: продвинутый. Зачем: vLLM-патчи и спекуляция для 27B на одной 24-ГБ карте.
+- **FastFlowLM** — ROCm/AMD, 2025–2026. [GitHub](https://github.com/ROCm/FastFlowLM), [бенчмарк Qwen3.8](https://fastflowlm.com/docs/benchmarks/qwen3.8_results/). Уровень: средний. Зачем: NPU-first рантайм для Ryzen AI; официальный бенчмарк AMD — 2–3 ток/с для 27B.
+- **ANEMLL** — Anemll, 2025–2026. [GitHub](https://github.com/Anemll/Anemll). Уровень: продвинутый. Зачем: конвертация LLM в CoreML для Apple Neural Engine; MIT заявлен в README, отдельного LICENSE-файла нет.
+- **«Pre-Compiled Pipeline Shards for Distributed LLM Inference on Intel AI PC Fleets»** — 2026. [arXiv:2608.19147](https://arxiv.org/html/2608.19147v1), [OpenVINO issue #35641](https://github.com/openvinotoolkit/openvino/issues/35641), [Cascadia](https://cascadia.to/blog/where-npus-fit-into-llm-inference). Уровень: продвинутый. Зачем: §8.6 — Llama 3.1 8B INT4 на Lunar Lake NPU, 3,55 → 11,46 ток/с на четырёх слотах; плюс ограничения OpenVINO.
+- **WebLLM** — MLC AI, 2023–2026. [GitHub](https://github.com/mlc-ai/web-llm), [arXiv:2412.15803](https://arxiv.org/abs/2412.15803). Уровень: средний. Зачем: WebGPU-инференс в браузере и его потолок по размеру модели.
+- **MLC LLM** — MLC AI, 2023–2026. [GitHub](https://github.com/mlc-ai/mlc-llm). Уровень: средний. Зачем: универсальный компилятор/рантайм для iOS, Android, WebGPU и настольных GPU.
+- **LMCache, «New Architecture Boosts MoE Inference Performance by 10×»** — 2026. [блог](https://blog.lmcache.ai/en/2026/04/03/lmcaches-new-architecture-boosts-moe-inference-performance-by-10x/). Уровень: продвинутый. Зачем: vendor-заявление об offload KV; 10× — по p99 TTFT, декод — около 3,8×, независимой проверки нет.
+
 ## Блоги и практика
 
 - **Tim Dettmers, «The Best GPUs for Deep Learning in 2023»** — 2023. [timdettmers.com](https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/). Уровень: средний. Зачем: как выбирать GPU под нагрузку и память.
@@ -179,6 +215,7 @@
 ## Ограничения проверки
 
 - **Самозаявленные числа.** Бенчмарки моделей, скорость в карточках и заявления вендоров не проверялись независимо. В книге они либо не используются как факты, либо помечены.
+- **Молодые проекты 2026.** У Strata, Splash, NInfer и HyperQwen возраст — месяцы, а не годы; их числа и флаги могут меняться быстрее, чем выходит книга. В тексте это помечено.
 - **Версии рантаймов.** Флаги llama.cpp и поведение сервера меняются между сборками. Сверяйте `--help` своей версии и документацию.
 - **Железо.** Точные значения пропускной способности и объёма памяти зависят от конкретной модели карты, драйвера и охлаждения. В книге — порядки величин.
 - **Даты.** Для некоторых постов и документации точная дата не указана; приведён год или «постоянно обновляется».
