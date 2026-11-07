@@ -11,8 +11,14 @@ create-missing = false
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
+# У 0.4.36 типографика не менялась; в 0.5 «умная пунктуация» включена по
+# умолчанию. Оставляем её выключенной, чтобы сайт совпадал с рендером GitHub.
+smart-punctuation = false
+# GitHub-алерты (> [!NOTE] и т. п.) — встроенная возможность mdBook 0.5.
+admonitions = true
 git-repository-url = "https://github.com/luckystrker/local-llm-inference-book"
 edit-url-template = "https://github.com/luckystrker/local-llm-inference-book/edit/main/{path}"
+additional-css = ["theme/book.css"]
 additional-js = ["theme/mermaid-init.js"]
 
 [output.html.search]

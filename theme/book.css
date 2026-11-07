@@ -1,0 +1,74 @@
+/* Дополнительные стили книги: узкие экраны (телефон ~360–430 px).
+
+   Здесь только адаптивность: типографика mdBook не переопределяется. */
+
+/* --- Таблицы ---------------------------------------------------------
+   На телефоне у mdBook большие боковые отступы ячеек (3px 20px) и базовый
+   шрифт; широкие таблицы перестают влезать в колонку и обрезаются справа.
+   Уменьшаем отступы и шрифт, разрешаем переносы — таблица укладывается в
+   ширину экрана вместо горизонтальной прокрутки. */
+@media (max-width: 760px) {
+    table {
+        width: 100%;
+        margin: 0.6em 0;
+        font-size: 0.86em;
+        line-height: 1.3;
+    }
+
+    table td,
+    table thead th {
+        padding: 4px 6px;
+        /* Переносы по слогам уменьшают min-content таблицы: она укладывается
+           в ширину экрана, а не обрезает последнюю колонку. break-word —
+           страховка для длинных токенов вроде `IQ4_XS`. */
+        hyphens: auto;
+        overflow-wrap: break-word;
+    }
+
+    table thead th {
+        font-weight: 700;
+    }
+}
+
+/* --- Mermaid ---------------------------------------------------------
+   Mermaid вписывает SVG в ширину колонки, из-за чего на телефоне широкая
+   схема сжимается в 4–5 раз и текст становится нечитаемым. Поэтому схему
+   показываем в её натуральную ширину (её выставляет mermaid-init.js
+   в --mermaid-w), а по горизонтали прокручиваем внутри блока. */
+.mermaid {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mermaid svg {
+    display: block;
+    margin: 0 auto;
+    width: var(--mermaid-w, auto) !important;
+    max-width: none !important;
+    height: auto !important;
+}
+
+/* Подсказка появляется только у схем, которые не влезли в экран. */
+.mermaid-hint {
+    margin: -0.4em 0 1em;
+    font-size: 0.8em;
+    opacity: 0.65;
+}
+
+/* На печати прокрутки нет: вписываем схему в страницу и убираем подсказку. */
+@media print {
+    .mermaid {
+        overflow: visible;
+    }
+
+    .mermaid svg {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .mermaid-hint {
+        display: none;
+    }
+}
