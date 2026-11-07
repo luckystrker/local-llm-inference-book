@@ -212,6 +212,60 @@
 - **Tim Dettmers, «The Best GPUs for Deep Learning in 2023»** — 2023. [timdettmers.com](https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/). Уровень: средний. Зачем: как выбирать GPU под нагрузку и память.
 - **Chip Huyen, «Building A Generative AI Platform»** — 2024. [huyenchip.com](https://huyenchip.com/2024/07/25/genai-platform.html). Уровень: средний. Зачем: архитектура приложений вокруг моделей.
 
+## Железо и цены (ноябрь 2026)
+
+Цены проверены 7 ноября 2026 года; курс ЦБ РФ — 81,79 ₽ за доллар. Уличные цены меняются ежедневно, поэтому числа в главе — ориентиры, а не обещание магазина. Где надёжного источника не было, в главе стоит «не нашёл».
+
+- **NVIDIA GeForce RTX 5090 — Specifications** — NVIDIA, 2026. [nvidia.com](https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/). Уровень: справка. Зачем: 32 ГБ GDDR7, 575 Вт, 1000 Вт БП, NVLink нет, 3352 AI TOPS.
+- **NVIDIA RTX PRO 6000 Blackwell Workstation Edition** — NVIDIA, 2026. [nvidia.com](https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000/). Уровень: справка. Зачем: 96 ГБ, 1792 ГБ/с, 600 Вт, 4000 AI TOPS.
+- **NVIDIA RTX PRO 5000 Blackwell** — NVIDIA, 2026. [nvidia.com](https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-5000). Уровень: справка. Зачем: 48/72 ГБ, 1344 ГБ/с, 300 Вт.
+- **NVIDIA DGX Spark — Specifications** — NVIDIA, 2026. [nvidia.com](https://www.nvidia.com/en-us/products/workstations/dgx-spark/). Уровень: справка. Зачем: GB10, 128 ГБ LPDDR5X, 273 ГБ/с, 140 Вт, 1 PFLOPS FP4, 29 дБА.
+- **Lenovo Press, ThinkSystem RTX PRO 6000 Blackwell Max-Q** — Lenovo, 2026. [lenovopress.lenovo.com](https://lenovopress.lenovo.com/lp2364-thinksystem-nvidia-rtx-pro-6000-blackwell-max-q-workstation-edition-gpu). Уровень: справка. Зачем: прямо указывает «NVLink support: No» — полезно против рекламных обещаний.
+- **Guru3D, «GeForce RTX 5090 D v2 Officially Released»** — 15.08.2025. [guru3d.com](https://www.guru3d.com/story/geforce-rtx-5090-d-v2-officially-released-specs-performance-and-pricing). Уровень: справка. Зачем: 24 ГБ, 1344 ГБ/с, 2375 TOPS, 575 Вт — замена битой ссылке.
+- **AMD Radeon AI PRO R9700** — AMD, 2026. [amd.com](https://www.amd.com/en/products/graphics/workstations/radeon-ai-pro/ai-9000-series/amd-radeon-ai-pro-r9700.html). Уровень: справка. Зачем: 32 ГБ, 640 ГБ/с, 300 Вт, ECC, 95,7 TFLOPS FP16, ROCm.
+- **Intel Arc Pro B-Series** — Intel, 2026. [intel.com](https://www.intel.com/content/www/us/en/products/details/discrete-gpus/arc/workstations/b-series.html). Уровень: справка. Зачем: B50/B60/B65/B70 — 16–32 ГБ, 224–608 ГБ/с, 70–230 Вт.
+- **Apple Mac Studio (M5 Max/M5 Ultra) — Tech Specs** — Apple, 2026. [support.apple.com](https://support.apple.com/en-us/128107). Уровень: справка. Зачем: 36–512 ГБ, 460–1200 ГБ/с.
+- **Apple Mac mini (M6/M5 Pro) — Tech Specs** — Apple, 2026. [support.apple.com](https://support.apple.com/en-us/128108). Уровень: справка. Зачем: 16–64 ГБ, 153–307 ГБ/с.
+- **AMD EPYC 9005 Series** — AMD, 2026. [amd.com](https://www.amd.com/en/products/processors/server/epyc/9005-series.html). Уровень: справка. Зачем: 12 каналов DDR5-6400, 614 ГБ/с на сокет.
+- **AMD Ryzen Threadripper 9000** — AMD, 2026. [amd.com](https://www.amd.com/en/products/processors/workstations/ryzen-threadripper.html). Уровень: справка. Зачем: TRX50 — 4 канала, WRX90 — 8 каналов, 80–128 линий PCIe 5.0.
+- **Tom’s Hardware, «Nvidia doubles RTX PRO 6000 Blackwell’s MSRP to $16,000»** — 2026. [tomshardware.com](https://www.tomshardware.com/pc-components/gpus/nvidia-doubles-rtx-pro-6000-blackwells-msrp-to-a-staggering-usd16-000-96gb-card-started-pre-orders-below-usd8-000-last-year). Уровень: средний. Зачем: как кризис памяти удвоил цену профессиональной карты.
+- **BestValueGPU, RTX 5090 price history** — 12.10.2026. [bestvaluegpu.com](https://bestvaluegpu.com/history/new-and-used-rtx-5090-price-history-and-specs). Уровень: справка. Зачем: уличная цена $4 999 и история.
+- **Tech Insider / Tom’s Hardware, RTX 5090 price tracking** — 05.11.2026. [tech-insider.org](https://tech-insider.org/gpu-price-tracking-2026-rtx-5090-6919-tomshardware-lowest-prices). Уровень: справка. Зачем: верхняя граница $6 919 и дефицит.
+- **GPU Sold, RTX 3090 used price** — 04.11.2026. [gpusold.com](https://www.gpusold.com/gpu/rtx-3090-24). Уровень: справка. Зачем: медиана проданных $1 586 за 14 дней.
+- **PCPrice.Watch, RTX 4090 used price** — 04.11.2026. [pcprice.watch](https://www.pcprice.watch/search/RTX4090/US/GPU). Уровень: справка. Зачем: медиана $2 496 и разброс.
+- **Silicon Comps, RTX 4090 / A6000 / RTX 6000 Ada** — 03.11.2026. [siliconcomps.com](https://siliconcomps.com/gpu/rtx-4090). Уровень: справка. Зачем: ориентиры цен на б/у 24–48 ГБ.
+- **AI Miracle, «Radeon AI PRO R9700: 32GB for $1,299»** — 13.10.2026. [aimiracle.ai](https://www.aimiracle.ai/ai-hardware-review/amd-radeon-ai-pro-r9700-review). Уровень: средний. Зачем: цена, ROCm, ограничения.
+- **Local AI Master, Radeon AI Pro R9700 for local AI** — 2026. [localaimaster.com](https://localaimaster.com/blog/radeon-ai-pro-r9700-local-ai). Уровень: средний. Зачем: prefill в 2,6–3,4 раза медленнее 5090, декод ~1,5 раза.
+- **ninabot.ch, «Intel Arc Pro B60 for LLM inference: four cards»** — 10–11.09.2026. [ninabot.ch](https://ninabot.ch/en/anchor/benchmarks). Уровень: продвинутый. Зачем: 4×B60 96 ГБ, 82,4 ток/с на 30B-A3B, 211 Вт.
+- **Framework Desktop Mainboard** — Framework, 2026. [frame.work](https://frame.work/products/framework-desktop-mainboard-amd-ryzen-ai-max-300-series). Уровень: справка. Зачем: Strix Halo 128 ГБ, цены и конфигурации.
+- **ComputingForGeeks, «Best Ryzen AI Max+ 395 Mini PC»** — 2026. [computingforgeeks.com](https://computingforgeeks.com/ryzen-ai-max-395-mini-pc-comparison). Уровень: справка. Зачем: сравнение боксов и цен.
+- **The Register, «Nvidia debuts $4,999 DGX Spark with half the RAM»** — 02.10.2026. [theregister.com](https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622). Уровень: средний. Зачем: рост цены DGX Spark до $6 950 и 64-гиговая версия.
+- **NIX, NVIDIA DGX Spark 128 ГБ** — 06.11.2026. [nix.ru](https://www.nix.ru/autocatalog/other_computers/NVIDIA-DGX-Spark-4TB-940-54242-0006-000-ARM-v92-A-GB10-128-4TbSSD-NVIDIA-Grace-Blackwell-WiFi-BT-DGX-OS_960944.html). Уровень: справка. Зачем: российская цена 860 185 ₽.
+- **DNS, видеокарты RTX 5080** — 07.11.2026. [dns-shop.ru](https://www.dns-shop.ru/catalog/recipe/9dacd3bfb81d51e2/rtx-5080). Уровень: справка. Зачем: российские цены 202–210 тыс. ₽.
+- **DNS, видеокарты RTX 5070 Ti** — 07.11.2026. [dns-shop.ru](https://www.dns-shop.ru/catalog/recipe/da6891e61ee3cd67/rtx-5070-ti). Уровень: справка. Зачем: цена около 150 тыс. ₽.
+- **DNS, видеокарты RTX 5070** — 07.11.2026. [dns-shop.ru](https://www.dns-shop.ru/catalog/recipe/d6b9917aaa77a744/rtx-5070). Уровень: справка. Зачем: цены 105–113 тыс. ₽.
+- **DNS, видеокарты RTX 5060 Ti 16 ГБ** — 07.11.2026. [dns-shop.ru](https://www.dns-shop.ru/catalog/recipe/2387582a8bf1a48b/rtx-5060-ti-16-gb). Уровень: справка. Зачем: цены 80–88 тыс. ₽.
+- **Metaratings, «Сколько стоит в России собрать игровой ПК»** — 2026. [cybersport.metaratings.ru](https://cybersport.metaratings.ru/articles/chto-proishodit-s-cenami-na-videokarty-operativnuyu-pamyat-i-zhestkie-diski-v-rossii). Уровень: справка. Зачем: RTX 5090 750–950 тыс. ₽, 5090D v2 400–440 тыс. ₽.
+- **3DNews, «RTX 5090 продаются в России от 350 тыс. рублей»** — 02.11.2026. [3dnews.ru](https://3dnews.ru/1119627/videokarti-geforce-rtx-5090-teper-prodayutsya-v-rossii-po-tsene-ot-350-tis-rubleys-garantiey). Уровень: справка. Зачем: разброс и серый импорт.
+- **Citilink, видеокарты AMD Radeon** — 07.11.2026. [citilink.ru](https://www.citilink.ru/catalog/videokarty--videokarty-amd). Уровень: справка. Зачем: RX 9060 XT 73–89 тыс. ₽.
+- **ServerFlow, Intel Arc Pro B60 24 ГБ** — 07.11.2026. [serverflow.ru](https://serverflow.ru/catalog/komplektuyushchie/videokarty/intel-arc-pro-b60-24gb-gddr6). Уровень: справка. Зачем: российская цена 110 300 ₽.
+- **Авито, RTX 3090** — 07.11.2026. [avito.ru](https://www.avito.ru/all/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?q=rtx+3090). Уровень: справка. Зачем: б/у 115–140 тыс. ₽.
+- **Авито, RTX 4090** — 07.11.2026. [avito.ru](https://www.avito.ru/all/tovary_dlya_kompyutera/komplektuyuschie/videokarty/geforce_rtx_4090-ASgBAgICA0TGB~pm7gmmZ8KsFIji_RQ). Уровень: справка. Зачем: б/у 145–270 тыс. ₽.
+- **Apple-store.net.ru, Mac mini** — 07.11.2026. [apple-store.net.ru](https://apple-store.net.ru/mac/apple-mac-mini). Уровень: справка. Зачем: Mac mini M5 Pro 215–280 тыс. ₽.
+- **Megabait, Mac Studio** — 07.11.2026. [megabait.net](https://megabait.net/categories/katalog-epl/tag/mac-studio). Уровень: справка. Зачем: Mac Studio M5 Max 36–128 ГБ, цены.
+- **RunPod — RTX 4090** — 2026. [runpod.io](https://www.runpod.io/gpu-models/rtx-4090). Уровень: справка. Зачем: аренда 4090 около $0,34/ч; использована для сравнения с 2×3090.
+- **Selectel, GPU-серверы** — 2026. [selectel.ru](https://selectel.ru/services/gpu). Уровень: справка. Зачем: 2×4090 210 ₽/ч, RTX PRO 6000 290 ₽/ч.
+- **HOSTKEY, аренда H100/A100** — 31.08.2026. [hostkey.ru](https://hostkey.ru/news/105-arendujte-moshchnyj-gpu-server-s-kartoj-nvidia-h100-za-207-rubchas). Уровень: справка. Зачем: H100 207 ₽/ч, A100 153 ₽/ч.
+- **Fusion Worldwide, «RDIMM Shortage 2026»** — 2026. [fusionww.com](https://www.fusionww.com/insights/rdimm-shortages-and-the-shift-in-server-shipments). Уровень: средний. Зачем: рост цен DRAM и RDIMM, причина подорожания железа.
+- **ЦБ РФ, курс доллара на 06.11.2026** — 06.11.2026. [myfin.by](https://ru.myfin.by/currency/cb-rf/usd/06-11-2026). Уровень: справка. Зачем: 81,79 ₽/$ для пересчёта.
+- **Тарифы на электроэнергию в Москве** — 2026. [info-gkh.ru](https://info-gkh.ru/regiontariff/moskva-gorod/9). Уровень: справка. Зачем: 8,90 ₽/кВт·ч с 1 октября 2026.
+- **llama.cpp — Backend/build docs** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md). Уровень: средний. Зачем: CUDA, HIP, SYCL, Metal, Vulkan, CPU.
+- **llama.cpp — SYCL backend** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/backend/SYCL.md). Уровень: продвинутый. Зачем: сборка и запуск на Intel GPU.
+- **MLX** — Apple Machine Learning Research, 2026. [GitHub](https://github.com/ml-explore/mlx). Уровень: средний. Зачем: фреймворк для Apple Silicon.
+- **ROCm — System requirements** — AMD, 2026. [docs.amd.com](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html). Уровень: продвинутый. Зачем: поддержка Radeon AI PRO и RDNA.
+- **vLLM — Installation** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/getting_started/installation/). Уровень: продвинутый. Зачем: CUDA, ROCm, XPU.
+- **AI Infra in Depth — hardware dataset** — Bojie Li, 2026. [GitHub](https://github.com/bojieli/ai-infra-book), [JSON](https://raw.githubusercontent.com/ilkruglov/designing-ai-infra-skill/main/plugins/designing-ai-infra/skills/designing-ai-infra/data/hardware.json). Уровень: справка. Зачем: 151 устройство с объёмами и ПСП; Apache-2.0, использован для сверки Apple M5/M6, RTX PRO 6000, A6000 и RTX 6000 Ada.
+
 ## Ограничения проверки
 
 - **Самозаявленные числа.** Бенчмарки моделей, скорость в карточках и заявления вендоров не проверялись независимо. В книге они либо не используются как факты, либо помечены.
