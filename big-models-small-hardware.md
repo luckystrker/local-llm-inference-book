@@ -368,7 +368,7 @@ AMD Strix Halo (Ryzen AI Max+ 395) — 128 ГБ объединённой пам�
 | [AirLLM](https://github.com/lyogavin/airllm) | 41,9 тыс. | 07.11.2026 | Apache-2.0 | почти любые HF-модели (macOS — Llama-style) | Linux, macOS |
 | [exo](https://github.com/exo-explore/exo) | 48,2 тыс. | 06.11.2026 | Apache-2.0 | MLX-модели: Qwen, DeepSeek, Kimi | macOS, Linux |
 | [Petals](https://github.com/bigscience-workshop/petals) | 10,7 тыс. | 07.09.2024 | MIT | Llama 3.1 405B, Mixtral 8x22B, BLOOM 176B | Linux, macOS, WSL |
-| [bitnet.cpp](https://github.com/microsoft/BitNet) | 41,5 тыс. | 27.07.2026 | MIT | BitNet b1.58 (2B) | Linux, Windows (CPU/GPU) |
+| [bitnet.cpp](https://github.com/microsoft/BitNet) | 41,5 тыс. | 27.07.2026 | MIT | BitNet b1.58 (2B) | Linux (CPU/GPU), Windows (CPU) |
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) | 133,6 тыс. | 07.11.2026 | MIT | GGUF, почти все архитектуры | все |
 | [MLC LLM](https://github.com/mlc-ai/mlc-llm) | 23,3 тыс. | 30.10.2026 | Apache-2.0 | Llama, Qwen, Gemma, Phi и др. | iOS, Android, WebGPU, desktop |
 | [WebLLM](https://github.com/mlc-ai/web-llm) | 19,4 тыс. | 03.11.2026 | Apache-2.0 | Llama 3, Phi 3, Gemma, Mistral, Qwen2 | браузер (WebGPU) |
