@@ -14,6 +14,7 @@
 - [10. Сэмплинг, температура и бюджет рассуждений](10-sampling-reasoning.md)
 - [11. Вызов инструментов: шаблоны чата, грамматики, JSON Schema](11-tool-calling.md)
 - [12. Методика бенчмарка и тюнинга](12-benchmark-methodology.md)
+- [Готовые «коробки»: Ollama, LM Studio и Unsloth Studio](boxed-solutions.md)
 - [13. Выбор модели под железо](13-model-selection.md)
 - [Как выбрать железо для локального инференса](hardware-choice.md)
 - [14. Речь и OCR локально](14-speech-ocr.md)
