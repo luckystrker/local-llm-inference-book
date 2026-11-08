@@ -6,7 +6,7 @@
 > - vLLM — Python/C++/CUDA-движок для GPU-серверов: PagedAttention, непрерывный батчинг, V1-планировщик, prefix caching по хешу блоков.
 > - Его сильные стороны — много одновременных пользователей, tensor/pipeline/expert parallelism и широкая поддержка моделей и квантов.
 > - Слабые — Linux-only, требовательность к GPU-стеку, ограниченная поддержка GGUF и отсутствие удобного CPU-MoE-offload, как в llama.cpp.
-> - Версия на 8 ноября 2026 — **v0.33.0** (2 ноября 2026), PyTorch 2.14, CUDA 13.0, ROCm 10.0.
+> - Версия на 8 ноября 2026 — **v0.33.0** (тег `v0.33.0` — 1 ноября 2026, релиз опубликован 2 ноября), PyTorch 2.14, CUDA 13.0, ROCm 10.0 — по [release notes](https://github.com/vllm-project/vllm/releases/tag/v0.33.0rc3).
 
 ## 1. Архитектура и для чего создан
 
@@ -209,7 +209,9 @@ vllm serve ./models/target \
 | `mtp` | MTP-головы целевой модели | не нужен отдельный чекпойнт |
 | `ngram` | n-граммы из промпта | дёшево, полезно для повторяющегося текста |
 | `suffix` | суффиксы из прошлых ответов | полезно для агентов и кода |
-| `dflash`, `dspark` | блок-диффузионные черновики | новые методы, проверяйте поддержку модели |
+| `dflash`, `dspark` | блок-диффузионные черновики | подтверждены в `SpeculativeMethod` v0.33.0; проверяйте поддержку конкретной модели |
+
+Методы `dflash` и `dspark` есть в `SpeculativeMethod` v0.33.0 (`vllm/config/speculative.py`), а release notes упоминают DFlash/DSpark в разделе спекуляции. Это не значит, что любой чекпойнт подойдёт: нужен совместимый draft и поддержка архитектуры.
 
 Для draft-модели можно задать отдельный TP:
 
@@ -259,7 +261,7 @@ vllm serve ./models/model \
 }
 ```
 
-Старые поля `guided_json`, `guided_regex`, `guided_choice` удалены в v0.12.0; используйте `structured_outputs` или `response_format`. Подробнее — глава 11.
+По документации v0.33.0 старые поля `guided_json`, `guided_regex`, `guided_choice` удалены в v0.12.0; используйте `structured_outputs` или `response_format`. Подробнее — глава 11.
 
 ### 6.2 Tool calling
 
@@ -311,7 +313,7 @@ docker run --rm --gpus all --ipc=host \
 ```
 
 > [!WARNING]
-> `--api-key` в vLLM защищает не все маршруты: часть служебных endpoints остаётся без аутентификации. Не выставляйте сервер в интернет, полагаясь только на этот флаг; ставьте reverse proxy и сетевые ограничения.
+> `--api-key` в vLLM защищает не все маршруты: часть служебных endpoints остаётся без аутентификации ([документация](https://docs.vllm.ai/en/latest/usage/security/#api-key-authentication-limitations)). Не выставляйте сервер в интернет, полагаясь только на этот флаг; ставьте reverse proxy и сетевые ограничения.
 
 ## 8. Метрики и наблюдаемость
 
@@ -332,6 +334,8 @@ docker run --rm --gpus all --ipc=host \
 | `vllm:request_prefill_time_seconds` | prefill |
 | `vllm:request_decode_time_seconds` | decode |
 | `vllm:request_success_total` | завершённые запросы по причине |
+
+Имена метрик — по документации v0.33.0; в своей сборке проверьте `curl /metrics`.
 
 Для per-request метрик:
 
@@ -364,7 +368,7 @@ docker pull vllm/vllm-openai:v0.33.0
 Для AMD:
 
 ```bash
-docker pull vllm/vllm:v0.33.0-rocm
+docker pull vllm/vllm-openai-rocm:v0.33.0
 ```
 
 Проверка:
@@ -489,9 +493,10 @@ vllm serve ./models/70b-fp8 \
 
 ## Источники главы
 
-Версии и флаги проверены **8 ноября 2026** по релизу v0.33.0 и документации vLLM.
+Версии и флаги проверены **8 ноября 2026** по релизу v0.33.0 (тег `v0.33.0rc3`) и документации vLLM.
 
-- **vLLM, релиз v0.33.0** — vLLM Project, 02.11.2026. [GitHub](https://github.com/vllm-project/vllm/releases/tag/v0.33.0). Уровень: продвинутый. Зачем: версия, PyTorch 2.14, CUDA 13, ROCm 10, изменения.
+- **vLLM, релиз v0.33.0** — vLLM Project, тег 01.11.2026, публикация 02.11.2026. [GitHub](https://github.com/vllm-project/vllm/releases/tag/v0.33.0rc3). Уровень: продвинутый. Зачем: версия, PyTorch 2.14, CUDA 13.0, ROCm 10.0, изменения.
+- **vLLM v0.33.0, `vllm/config/speculative.py`** — vLLM Project, 2026. [GitHub](https://github.com/vllm-project/vllm/blob/v0.33.0/vllm/config/speculative.py). Уровень: продвинутый. Зачем: `SpeculativeMethod` включает `dflash` и `dspark`.
 - **vLLM, «Automatic Prefix Caching»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/). Уровень: средний. Зачем: APC, ограничения, Mamba.
 - **vLLM, «Optimization and Tuning»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/configuration/optimization/). Уровень: средний. Зачем: chunked prefill, preemption, TP/PP/EP/DP.
 - **vLLM, «Conserving Memory»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/configuration/conserving_memory/). Уровень: средний. Зачем: OOM и способы экономии.

@@ -113,7 +113,7 @@
 - **«Orca: A Distributed Serving System»** — Yu et al., OSDI 2022. [USENIX](https://www.usenix.org/conference/osdi22/presentation/yu). Уровень: продвинутый. Зачем: итеративный батчинг.
 - **«How continuous batching enables 23x throughput»** — Anyscale, 2022. [блог](https://www.anyscale.com/blog/continuous-batching-llm-inference). Уровень: средний. Зачем: наглядный разбор continuous batching.
 - **llama.cpp Discussion #10260** — ggml-org, 2024. [GitHub](https://github.com/ggml-org/llama.cpp/discussions/10260). Уровень: средний. Зачем: разница `-b` и `-ub`.
-- **llama.cpp, `tools/server/README.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md). Уровень: средний. Зачем: флаги сервера, KV, MoE, tools.
+- **llama.cpp, `tools/server/README.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md). Уровень: средний. Зачем: флаги сервера, KV, MoE, tools, `--n-cpu-moe`, `--moe-cache-mib`, KV offload и квантование KV.
 - **llama.cpp, `docs/speculative.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/speculative.md). Уровень: средний. Зачем: типы спекуляции и флаги.
 - **llama.cpp PR #22673, «MTP Support»** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/pull/22673). Уровень: продвинутый. Зачем: поддержка MTP-голов.
 - **llama.cpp, `tools/llama-bench/README.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/llama-bench/README.md). Уровень: средний. Зачем: методика микробенчмарка.
@@ -129,12 +129,10 @@
 Версии и флаги проверены 8 ноября 2026 по релизам и официальной документации. Матрицы моделей, квантов и функций меняются между релизами; сверяйте `--help` и документацию своей версии.
 
 - **llama.cpp, релиз v0.9.0** — ggml-org, 04.11.2026. [GitHub](https://github.com/ggml-org/llama.cpp/releases/tag/v0.9.0). Уровень: продвинутый. Зачем: версия, ggml 0.29.0, FP8 E4M3, unified KV, список бэкендов.
-- **llama.cpp, `tools/server/README.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md). Уровень: средний. Зачем: флаги сервера, endpoints, `/metrics`, `/slots`, `/props`.
-- **llama.cpp, `docs/speculative.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/speculative.md). Уровень: средний. Зачем: draft, EAGLE-3, DFlash, DSpark, MTP, n-граммы.
-- **llama.cpp, `docs/build.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md). Уровень: средний. Зачем: CUDA, HIP, SYCL, Vulkan, Metal, CANN, MUSA.
-- **llama.cpp, `docs/function-calling.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/function-calling.md). Уровень: средний. Зачем: `--jinja`, нативные и generic-обработчики.
 - **llama.cpp, `docs/development/token_generation_performance_tips.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/development/token_generation_performance_tips.md). Уровень: средний. Зачем: потоки CPU и проверка offload.
-- **vLLM, релиз v0.33.0** — vLLM Project, 02.11.2026. [GitHub](https://github.com/vllm-project/vllm/releases/tag/v0.33.0). Уровень: продвинутый. Зачем: версия, PyTorch 2.14, CUDA 13.0, ROCm 10.0.
+- **vLLM, релиз v0.33.0** — vLLM Project, тег 01.11.2026, публикация 02.11.2026. [GitHub](https://github.com/vllm-project/vllm/releases/tag/v0.33.0rc3). Уровень: продвинутый. Зачем: версия, PyTorch 2.14, CUDA 13.0, ROCm 10.0, изменения.
+- **vLLM v0.33.0, `vllm/config/speculative.py`** — vLLM Project, 2026. [GitHub](https://github.com/vllm-project/vllm/blob/v0.33.0/vllm/config/speculative.py). Уровень: продвинутый. Зачем: `SpeculativeMethod` включает `dflash` и `dspark`.
+- **vLLM, «Security: API key authentication limitations»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/usage/security/). Уровень: средний. Зачем: какие маршруты не защищает `--api-key`.
 - **vLLM, «Optimization and Tuning»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/configuration/optimization/). Уровень: средний. Зачем: chunked prefill, preemption, TP/PP/EP/DP.
 - **vLLM, «Conserving Memory»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/configuration/conserving_memory/). Уровень: средний. Зачем: OOM и способы экономии.
 - **vLLM, «Speculative Decoding»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/features/speculative_decoding/). Уровень: продвинутый. Зачем: методы, `--speculative-config`, MTP.
@@ -152,7 +150,7 @@
 - **SGLang, «Tool Parser»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/tool_parser). Уровень: средний. Зачем: парсеры и поддерживаемые модели.
 - **SGLang, «Production Metrics»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/references/production_metrics). Уровень: средний. Зачем: метрики `sglang:`.
 - **SGLang, «Quantization»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/quantization). Уровень: продвинутый. Зачем: FP8/FP4/AWQ/GPTQ.
-- **SGLang, «Paged Experts»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/paged_experts). Уровень: продвинутый. Зачем: MoE больше VRAM и ограничения.
+- **SGLang, «Paged Experts» (v0.5.23 и main)** — SGLang, 2026. [v0.5.23](https://github.com/sgl-project/sglang/blob/v0.5.23/docs/docs/advanced_features/paged_experts.mdx), [main](https://docs.sglang.io/docs/advanced_features/paged_experts). Уровень: продвинутый. Зачем: MoE больше VRAM и ограничения; в v0.5.23 `--paged-experts-num-resident` обязателен, в main по умолчанию `auto`.
 - **SGLang, «Quantized KV Cache»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/quantized_kv_cache). Уровень: продвинутый. Зачем: FP8/FP4 KV.
 
 ## Спекулятивное декодирование
@@ -218,7 +216,6 @@
 - **exo** — exo labs, 2024–2026. [GitHub](https://github.com/exo-explore/exo). Уровень: средний. Зачем: домашний кластер Mac, tensor parallel и RDMA over Thunderbolt.
 - **«1.5 TB of VRAM on Mac Studio — RDMA over Thunderbolt 5»** — Jeff Geerling, 2025. [jeffgeerling.com](https://www.jeffgeerling.com/blog/2025/15-tb-vram-on-mac-studio-rdma-over-thunderbolt-5). Уровень: средний. Зачем: независимые замеры exo на четырёх Mac Studio и сравнение с llama.cpp RPC.
 - **llama.cpp, `tools/rpc/README.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/README.md). Уровень: продвинутый. Зачем: RPC-бэкенд, TCP/RDMA и предупреждение о небезопасности.
-- **llama.cpp, `tools/server/README.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md). Уровень: средний. Зачем: `--n-cpu-moe`, `--moe-cache-mib`, KV offload и квантование KV.
 - **Petals** — bigscience-workshop, 2022–2024. [GitHub](https://github.com/bigscience-workshop/petals). Уровень: средний. Зачем: BitTorrent-подобный распределённый инференс; проект не развивается с 2024 года.
 - **distributed-llama** — b4rtaz, 2023–2026. [GitHub](https://github.com/b4rtaz/distributed-llama). Уровень: средний. Зачем: кластер из домашних устройств, tensor parallelism, ограничения Q4_0 и 2^n узлов.
 - **«The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits»** — Ma et al., 2024. [arXiv:2402.17764](https://arxiv.org/abs/2402.17764). Уровень: продвинутый. Зачем: тернарные веса и обучение с нуля; не путать с пост-тренировочным квантованием.

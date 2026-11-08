@@ -21,7 +21,7 @@
 | **Много пользователей** | ограниченно | отлично | отлично |
 | **Prefix cache** | слот + LCP | хеш блоков | radix-дерево |
 | **MoE-offload в ОЗУ** | да, `--n-cpu-moe` | только общий `--cpu-offload-gb` | Paged Experts (узко) |
-| **Спекуляция** | draft, EAGLE-3, DFlash, DSpark, MTP, n-граммы | draft, EAGLE-3, MTP, n-граммы, suffix, DFlash | EAGLE, MTP, NGRAM, UNO, DFLASH |
+| **Спекуляция** | draft, EAGLE-3, DFlash, DSpark, MTP, n-граммы | draft, EAGLE-3, MTP, n-граммы, suffix, DFlash, DSpark | EAGLE, MTP, NGRAM, UNO, DFLASH |
 | **Structured output** | GBNF, JSON Schema | XGrammar/guidance | XGrammar/Outlines/llguidance |
 | **Tool calling** | нативные/generic обработчики | парсеры + strict schema | парсеры + auto |
 | **OpenAI API** | да | да | да |
@@ -189,6 +189,7 @@ flowchart TB
 - **Независимых замеров нет.** Все сравнения в этой главе качественные; числа производительности нужно получать по методике главы 12 на своём железе и трафике.
 - **Матрицы поддержки меняются.** Списки моделей, квантов, бэкендов и функций в vLLM/SGLang обновляются каждый релиз; таблицы отражают документацию на 8 ноября 2026.
 - **Заявления авторов.** Отдельно отмеченные цифры (например, «до 30× быстрее CPU-offload» для Paged Experts) — самозаявленные; независимой проверки в книге нет.
+- **Имена метрик.** Они сверены с документацией и исходниками соответствующих версий, но не с живым `/metrics` каждого движка. Перед настройкой дашборда сделайте один `curl /metrics` на своей сборке: имена и набор метрик могут отличаться.
 - **Железо и драйверы.** Реальная скорость зависит от конкретной карты, драйвера, охлаждения и версии ядра; в книге — порядки величин.
 - **Цены и доступность.** Экономические выводы — в главе «Как выбрать железо»; здесь они не пересчитываются.
 
@@ -223,7 +224,8 @@ flowchart TB
 
 - **llama.cpp, релиз v0.9.0** — ggml-org, 04.11.2026. [GitHub](https://github.com/ggml-org/llama.cpp/releases/tag/v0.9.0). Уровень: продвинутый. Зачем: версия и возможности.
 - **llama.cpp, `tools/server/README.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md). Уровень: средний. Зачем: флаги, endpoints, метрики.
-- **vLLM, релиз v0.33.0** — vLLM Project, 02.11.2026. [GitHub](https://github.com/vllm-project/vllm/releases/tag/v0.33.0). Уровень: продвинутый. Зачем: версия, CUDA/ROCm, изменения.
+- **vLLM, релиз v0.33.0** — vLLM Project, тег 01.11.2026, публикация 02.11.2026. [GitHub](https://github.com/vllm-project/vllm/releases/tag/v0.33.0rc3). Уровень: продвинутый. Зачем: версия, CUDA/ROCm, изменения.
+- **vLLM v0.33.0, `vllm/config/speculative.py`** — vLLM Project, 2026. [GitHub](https://github.com/vllm-project/vllm/blob/v0.33.0/vllm/config/speculative.py). Уровень: продвинутый. Зачем: `SpeculativeMethod` включает `dflash` и `dspark`.
 - **vLLM, «Optimization and Tuning»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/configuration/optimization/). Уровень: средний. Зачем: батчинг, preemption, параллелизм.
 - **SGLang, релиз v0.5.23** — SGLang Project, 02.11.2026. [GitHub](https://github.com/sgl-project/sglang/releases/tag/v0.5.23). Уровень: продвинутый. Зачем: версия, Paged Experts, HiCache.
 - **SGLang, «Server Arguments»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/server_arguments). Уровень: средний. Зачем: флаги и значения по умолчанию.
