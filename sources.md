@@ -124,6 +124,37 @@
 - **llama.cpp, `grammars/README.md`** — ggml-org. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/grammars/README.md). Уровень: средний. Зачем: синтаксис GBNF.
 - **vLLM, «Tool Calling»** — vLLM. [docs.vllm.ai](https://docs.vllm.ai/en/latest/features/tool_calling.html). Уровень: средний. Зачем: strict schema и `tool_choice`.
 
+## Движки инференса (ноябрь 2026)
+
+Версии и флаги проверены 8 ноября 2026 по релизам и официальной документации. Матрицы моделей, квантов и функций меняются между релизами; сверяйте `--help` и документацию своей версии.
+
+- **llama.cpp, релиз v0.9.0** — ggml-org, 04.11.2026. [GitHub](https://github.com/ggml-org/llama.cpp/releases/tag/v0.9.0). Уровень: продвинутый. Зачем: версия, ggml 0.29.0, FP8 E4M3, unified KV, список бэкендов.
+- **llama.cpp, `tools/server/README.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md). Уровень: средний. Зачем: флаги сервера, endpoints, `/metrics`, `/slots`, `/props`.
+- **llama.cpp, `docs/speculative.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/speculative.md). Уровень: средний. Зачем: draft, EAGLE-3, DFlash, DSpark, MTP, n-граммы.
+- **llama.cpp, `docs/build.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md). Уровень: средний. Зачем: CUDA, HIP, SYCL, Vulkan, Metal, CANN, MUSA.
+- **llama.cpp, `docs/function-calling.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/function-calling.md). Уровень: средний. Зачем: `--jinja`, нативные и generic-обработчики.
+- **llama.cpp, `docs/development/token_generation_performance_tips.md`** — ggml-org, 2026. [GitHub](https://github.com/ggml-org/llama.cpp/blob/master/docs/development/token_generation_performance_tips.md). Уровень: средний. Зачем: потоки CPU и проверка offload.
+- **vLLM, релиз v0.33.0** — vLLM Project, 02.11.2026. [GitHub](https://github.com/vllm-project/vllm/releases/tag/v0.33.0). Уровень: продвинутый. Зачем: версия, PyTorch 2.14, CUDA 13.0, ROCm 10.0.
+- **vLLM, «Optimization and Tuning»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/configuration/optimization/). Уровень: средний. Зачем: chunked prefill, preemption, TP/PP/EP/DP.
+- **vLLM, «Conserving Memory»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/configuration/conserving_memory/). Уровень: средний. Зачем: OOM и способы экономии.
+- **vLLM, «Speculative Decoding»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/features/speculative_decoding/). Уровень: продвинутый. Зачем: методы, `--speculative-config`, MTP.
+- **vLLM, «Structured Outputs»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/features/structured_outputs/). Уровень: средний. Зачем: XGrammar/guidance и `response_format`.
+- **vLLM, «Production Metrics»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/usage/metrics/). Уровень: средний. Зачем: метрики Prometheus.
+- **vLLM, «Per-Request Metrics»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/features/per_request_metrics/). Уровень: средний. Зачем: `--enable-per-request-metrics`.
+- **vLLM, «Quantization»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/features/quantization/). Уровень: продвинутый. Зачем: форматы и поддержка железа.
+- **vLLM, «Quantized KV Cache»** — vLLM, 2026. [docs.vllm.ai](https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/). Уровень: продвинутый. Зачем: FP8 KV и калибровка.
+- **SGLang, релиз v0.5.23** — SGLang Project, 02.11.2026. [GitHub](https://github.com/sgl-project/sglang/releases/tag/v0.5.23). Уровень: продвинутый. Зачем: версия, Paged Experts, HiCache, новые модели.
+- **SGLang, «Server Arguments»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/server_arguments). Уровень: средний. Зачем: флаги и значения по умолчанию.
+- **SGLang, «Radix Cache Eviction Policies»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/radix_eviction_policy). Уровень: средний. Зачем: LRU/LFU/SLRU/priority.
+- **SGLang, «HiCache Best Practices»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/hicache_best_practices). Уровень: продвинутый. Зачем: L1/L2/L3 и настройка.
+- **SGLang, «Speculative Decoding»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/speculative_decoding). Уровень: продвинутый. Зачем: EAGLE, MTP, NGRAM, UNO, DFLASH.
+- **SGLang, «Structured Outputs»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/structured_outputs). Уровень: средний. Зачем: XGrammar/Outlines/llguidance.
+- **SGLang, «Tool Parser»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/tool_parser). Уровень: средний. Зачем: парсеры и поддерживаемые модели.
+- **SGLang, «Production Metrics»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/references/production_metrics). Уровень: средний. Зачем: метрики `sglang:`.
+- **SGLang, «Quantization»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/quantization). Уровень: продвинутый. Зачем: FP8/FP4/AWQ/GPTQ.
+- **SGLang, «Paged Experts»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/paged_experts). Уровень: продвинутый. Зачем: MoE больше VRAM и ограничения.
+- **SGLang, «Quantized KV Cache»** — SGLang, 2026. [docs.sglang.io](https://docs.sglang.io/docs/advanced_features/quantized_kv_cache). Уровень: продвинутый. Зачем: FP8/FP4 KV.
+
 ## Спекулятивное декодирование
 
 - **«Fast Inference from Transformers via Speculative Decoding»** — Leviathan, Kalman, Matias, 2022. [arXiv:2211.17192](https://arxiv.org/abs/2211.17192). Уровень: продвинутый. Зачем: формализация и анализ.
