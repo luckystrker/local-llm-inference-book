@@ -235,6 +235,26 @@
 - **MLC LLM** — MLC AI, 2023–2026. [GitHub](https://github.com/mlc-ai/mlc-llm). Уровень: средний. Зачем: универсальный компилятор/рантайм для iOS, Android, WebGPU и настольных GPU.
 - **LMCache, «New Architecture Boosts MoE Inference Performance by 10×»** — 2026. [блог](https://blog.lmcache.ai/en/2026/04/03/lmcaches-new-architecture-boosts-moe-inference-performance-by-10x/). Уровень: продвинутый. Зачем: vendor-заявление об offload KV; 10× — по p99 TTFT, декод — около 3,8×, независимой проверки нет.
 
+## Коробочные решения (ноябрь 2026)
+
+- **Ollama — документация** — Ollama, 2026. [docs.ollama.com](https://docs.ollama.com/). Уровень: новичок–средний. Зачем: контекст по VRAM, Modelfile, OpenAI-совместимость, tool calling, импорт GGUF, параллельные запросы. Основной источник для главы о коробках.
+- **Ollama v0.40.15** — Ollama, 3 ноября 2026. [GitHub](https://github.com/ollama/ollama/releases/tag/v0.40.15). Уровень: справка. Зачем: актуальная версия, MLX-сборки, изменения llama.cpp/MLX.
+- **Ollama — политика приватности** — Ollama, март 2026. [ollama.com/privacy](https://ollama.com/privacy). Уровень: справка. Зачем: что уходит в облако, а что остаётся локально; `OLLAMA_NO_CLOUD`.
+- **LM Studio 0.4.0** — LM Studio, 28 января 2026. [блог](https://lmstudio.ai/blog/0.4.0). Уровень: новичок–средний. Зачем: `llmster`, параллельные запросы, unified KV, stateful REST, permission keys.
+- **LM Studio — Parallel Requests** — LM Studio, 2026. [docs](https://lmstudio.ai/docs/app/advanced/parallel-requests). Уровень: средний. Зачем: Max Concurrent Predictions = 4 по умолчанию; ограничение для MLX на момент 0.4.0.
+- **LM Studio — Headless / TTL** — LM Studio, 2026. [headless](https://lmstudio.ai/docs/developer/core/headless), [TTL](https://lmstudio.ai/docs/developer/core/ttl-and-auto-evict). Уровень: средний. Зачем: JIT, TTL 60 минут, auto-evict, запуск без GUI.
+- **LM Studio — lms load** — LM Studio, 2026. [docs](https://lmstudio.ai/docs/cli/local-models/load). Уровень: новичок–средний. Зачем: `--context-length`, `--gpu`, `--ttl`, `--estimate-only`.
+- **LM Studio — Speculative Decoding** — LM Studio, 2026. [docs](https://lmstudio.ai/docs/app/advanced/speculative-decoding). Уровень: средний. Зачем: черновик, общий словарь, ориентиры размеров, зависимость от промпта.
+- **LM Studio — App Terms / Privacy** — LM Studio, 2025–2026. [terms](https://lmstudio.ai/app-terms), [privacy](https://lmstudio.ai/app-privacy). Уровень: справка. Зачем: проприетарная лицензия, бесплатность для работы, отсутствие телеметрии.
+- **LM Studio, bug #2024** — LM Studio bug tracker, июнь 2026. [GitHub](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues/2024). Уровень: продвинутый. Зачем: ограничения программной настройки KV-кванта и параллельности; пользовательский отчёт, не официальная документация.
+- **Unsloth Studio** — Unsloth, 2026. [документация](https://unsloth.ai/docs/new/studio), [chat](https://unsloth.ai/docs/new/studio/chat), [API](https://unsloth.ai/docs/basics/api). Уровень: новичок–средний. Зачем: инференс GGUF/MLX, дообучение, экспорт, API, лицензия, auto context.
+- **Unsloth changelog** — Unsloth, 6 ноября 2026. [docs](https://unsloth.ai/docs/new/changelog). Уровень: средний. Зачем: 4 слота, многопользовательские аккаунты, vLLM/SGLang, версии и изменения.
+- **Jan** — Menlo Research, 2026. [quickstart](https://jan.ai/docs/desktop/quickstart), [репозиторий](https://github.com/janhq/jan), [движок](https://github.com/janhq/jan/blob/docs-stable/docs/content/desktop/local-engine/llama-cpp.mdx), [API](https://github.com/janhq/jan/blob/docs-stable/docs/content/desktop/api-server.mdx). Уровень: новичок–средний. Зачем: llama.cpp/MLX, настройки KV и слотов, локальный API, лицензия.
+- **llamafile** — Mozilla.ai, 2026. [репозиторий](https://github.com/mozilla-ai/llamafile), [запуск](https://docs.mozilla.ai/llamafile/using-llamafile/running_llamafile), [API](https://docs.mozilla.ai/llamafile/using-llamafile/api). Уровень: новичок–средний. Зачем: один файл, сервер, OpenAI/Anthropic API, ограничение Windows 4 ГБ.
+- **GPT4All 3.10.0** — Nomic, 25 февраля 2025. [GitHub](https://github.com/nomic-ai/gpt4all/releases/tag/v3.10.0). Уровень: новичок. Зачем: последний стабильный релиз; показывает темп проекта.
+- **LocalAI 4.12.1** — LocalAI, 23 октября 2026. [GitHub](https://github.com/mudler/LocalAI/releases/tag/v4.12.1). Уровень: средний. Зачем: актуальная версия серверного шлюза.
+- **LocalAI — quickstart / text generation / auth** — LocalAI, 2026. [quickstart](https://localai.io/docs/basics/getting_started/), [text generation](https://localai.io/docs/features/text-generation/), [auth](https://localai.io/docs/features/authentication/). Уровень: средний–продвинутый. Зачем: бэкенды llama.cpp/ik/vLLM/SGLang, OpenAI/Anthropic/Responses, роли и OIDC.
+
 ## Блоги и практика
 
 - **Tim Dettmers, «The Best GPUs for Deep Learning in 2023»** — 2023. [timdettmers.com](https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/). Уровень: средний. Зачем: как выбирать GPU под нагрузку и память.

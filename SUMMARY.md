@@ -18,6 +18,7 @@
 - [Движки инференса: vLLM](engines-vllm.md)
 - [Движки инференса: SGLang](engines-sglang.md)
 - [Движки инференса: сравнение и выбор](engines-comparison.md)
+- [Готовые «коробки»: Ollama, LM Studio и Unsloth Studio](boxed-solutions.md)
 - [13. Выбор модели под железо](13-model-selection.md)
 - [Как выбрать железо для локального инференса](hardware-choice.md)
 - [14. Речь и OCR локально](14-speech-ocr.md)
